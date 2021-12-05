@@ -76,6 +76,12 @@ body{
 .icon{
     font-size: 1.4rem;
 }
+.close{
+    display: none;
+}
+.open{
+    display: block;
+}
 
 
 /** LOGIN */
@@ -135,6 +141,7 @@ body{
 .menu-responsive{
     display: none;
     cursor: pointer;
+    padding: 10px;
 }
 .navbar-options{
     display: flex;
@@ -152,8 +159,22 @@ body{
 }
 
 
-/** RESPONSIVE DESIGN */
 
+/* ANIMATIONS */
+@keyframes openMenu{
+    0%{
+        margin-left: -100%;
+        margin-right: 100%;
+    }
+    100%{
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+}
+
+
+
+/** RESPONSIVE DESIGN */
 @media screen and (max-width: 1455px){
     /** LOGIN */
     .account{
@@ -191,9 +212,6 @@ body{
         padding: 30px;
     }
     /** PANEL */
-    .list-item{
-        display: none;
-    }
     .user-container{
         font-size: 0.8rem;
     }
@@ -202,5 +220,39 @@ body{
     }
     .menu-responsive, .menu{
         display: block
+    }
+    .navbar{
+        padding: 10px;
+    }
+    .navbar-options{
+        display: none;
+        flex-direction: column;
+        align-items: unset;
+        position: absolute;
+        top: 53px;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-color);
+        z-index: 10;
+        padding: 20px 0;
+    }
+    .hidden{
+        display: none;
+    }
+    .visible{
+        display: block;
+        animation: openMenu .6s ease-in-out;
+    }
+    .navbar-link{
+        display: block;
+    }
+    .option-icon{
+        display: inline;
+    }
+    .navbar-link:hover{
+        border-radius: 0;
+    }
+    .navbar-link:focus{
+        border-bottom: none;
     }
 }
