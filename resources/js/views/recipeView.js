@@ -51,7 +51,7 @@ export const dibujarPrimeraFase = () => {
     elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo3);
     numHijo++;
 
-    const hijo4 = `<div class="row mt-2 justify-content-center" id="hijo-${numHijo}">
+    const hijo4 = `<div class="row mt-2 justify-content-center" id="hijo-receta-botones">
                         <div class="col-2">
                             <button class="btn-atras">Atras</button>
                         </div>
@@ -105,15 +105,53 @@ export const dibujarSegundaFase = (ingredientes) => {
     elementos.padreForRecipe.insertAdjacentHTML('afterbegin',hijo);
 };
 
-export const removerHijo = () => {
+export const dibujarTerceraFase = (receta) => {
+    //let numResumen = 0;
+    const hijo = `<div class="row mt-3 justify-content-center" id="resumen-0">
+                    <div class="col-12">
+                        <h1>Receta: Nombre_de_la_receta</h1>
+                    </div>
+                </div>
+                <div class="row mt-5 justify-content-center" id="resumen-1">
+                    <div class="col-12">
+                        <h3>Ingredientes:</h3>
+                    </div>
+                </div>
+                <div class="row mt-3 justify-content-center" id="resumen-2">
+                    <div class="col-6">
+                        <h5>Nombre_inrediente 200gr = $ 00.00</h5>
+                    </div>
+                </div>
+                <div class="row mt-5 justify-content-center" id="resumen-3">
+                    <div class="col-12">
+                        <h2>Total: $520.20</h2>
+                    </div>
+                </div>`;
+    elementos.padreForRecipe.insertAdjacentHTML('afterbegin',hijo);
+};
+
+export const removerHijo = (contador) => {
     const numHijos = elementos.padreForRecipe.childElementCount;
     const padre = elementos.padreForRecipe;
     if(numHijos === 1){
         padre.removeChild(padre.childNodes[0]);
     }else{
-        for(let i=0;i<numHijos-1;i++){
-            let hijo = document.getElementById(`hijo-${i}`);
+        if(contador === 0 ){
+            eliminaHijos(padre,'hijo',numHijos-1);
+        }else if(contador === 1){
+            eliminaHijos(padre,'ingrediente',numHijos-1);
+        }else if(contador === 2){
+            eliminaHijos(padre,'resumen',numHijos-1);
+            const hijo = document.getElementById('hijo-receta-botones');
             padre.removeChild(hijo);
         }
     }
 };
+
+
+const eliminaHijos = (padre,cadena,limite) => {
+    for(let i=0;i<limite;i++){
+        let hijo = document.getElementById(`${cadena}-${i}`);
+        padre.removeChild(hijo);
+    }
+}
