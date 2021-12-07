@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', LoginController::class)->name('login');
 
-Route::prefix('/panel')->name('panel.')->group(function () {
+/*Route::prefix('/panel')->name('panel.')->group(function () {
     //recipes
     Route::get('/receta',[RecipeController::class,'index'])->name('recipe.index');
     Route::get('/receta/create', [RecipeController::class,'create'])->name('recipe.create');
@@ -27,4 +27,7 @@ Route::prefix('/panel')->name('panel.')->group(function () {
 
 
     //cost
-});
+});*/
+
+Route::get('/panel/receta',[RecipeController::class,'index'])->name('panel.recipe.index');
+

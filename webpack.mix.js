@@ -1,4 +1,6 @@
 const mix = require('laravel-mix');
+const path = require('path');
+const paht = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -16,9 +18,14 @@ mix.scripts([
     'node_modules/bootstrap/dist/css/bootstrap.min.css'
 ],'public/css/app.css');
 
-mix.scripts([
-    'resources/js/botones.js'
-],'public/js/funcionalidad.js');
+mix.webpackConfig({
+    entry: './resources/js/index.js',
+    output: {
+        path: path.resolve(__dirname,'public/js'),
+        filename: 'funcionalidad.js'
+    },
+    mode: 'development'
+});
 
 mix.styles([
     'node_modules/font-awesome/css/font-awesome.min.css'

@@ -35,6 +35,6 @@
 
     <!---->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/funcionalidad.js?v=1.0')}}"></script>
+    <script src="{{ asset('js/funcionalidad.js')}}"></script>
 </body>
 </html>

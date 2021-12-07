@@ -8,7 +8,7 @@ class RecipeController extends Controller
 {
     //debe de contener 4 metodos por 4 rutas
     public function index(){
-        return view('layouts.panel');
+        return view('recipes.index');
     }
 
     public function create(){
