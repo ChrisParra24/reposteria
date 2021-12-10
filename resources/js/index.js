@@ -15,9 +15,15 @@ elementos.padreForRecipe.addEventListener('click', (e)=>{
         recipeView.removerHijo(contadorSiguiente);
         recipeView.dibujarPrimeraFase();
     }
+<<<<<<< HEAD
     if(e.target.matches('.btn-siguiente')){
         if(contadorSiguiente===0){
             //guardamos el nombre de la receta
+=======
+    if(e.target.matches('#btn_next')){
+    // if(e.target.matches('.btn-siguiente')){
+        //guardamos el nombre de la receta
+>>>>>>> main
 
             //guardamos los checbox seleccionados
 

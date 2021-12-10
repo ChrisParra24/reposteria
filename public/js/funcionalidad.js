@@ -43,32 +43,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./resources/js/views/base.js");
 
 var dibujaBotonPrimeros = function dibujaBotonPrimeros(id0, id1, id2) {
-  var hijo = "<div class=\"row justify-content-center\" id=\"".concat(id0, "\">\n                        <div class=\"d-grid gap-2 col-3\">\n                            <button type=\"button\" class=\"btn btn-secondary ").concat(id1, "\" id=\"").concat(id1, "\">Nueva</button>\n                        </div>\n                        <div class=\"d-grid gap-2 col-3\">\n                            <button type=\"button\" class=\"btn btn-secondary ").concat(id1, "\" id=\"").concat(id2, "\">Actualizar</button>\n                        </div>\n                    </div>");
+  var hijo = "<div class=\"container-fluid\" id=\"".concat(id0, "\">\n                    <button type=\"button\" class=\"btn btn-secondary ").concat(id1, "\" id=\"").concat(id1, "\"><i class=\"fas fa-plus-square\"></i>Nueva</button>\n                    <button type=\"button\" class=\"btn btn-secondary ").concat(id2, "\" id=\"").concat(id2, "\"><i class=\"fas fa-sync-alt\"></i>Actualizar</button>\n                </div>");
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
 };
 var dibujarPrimeraFase = function dibujarPrimeraFase() {
   var numHijo = 0; //primero se dibujara: 1) etiqueta y su text input
 
-  var hijo1 = "<div class=\"row justify-content-center\" id=\"hijo-".concat(numHijo, "\">\n                        <div class=\"col-2\">\n                            <label for=\"\">Nombre de la receta</label>\n                        </div>\n                        <div class=\"col-4\">\n                            <input type=\"text\" name=\"\" id=\"\">\n                        </div>\n                    </div>");
+  var hijo1 = "<div class=\"row-form\" id=\"hijo-".concat(numHijo, "\">\n                        <h1 class=\"title-section\">Nueva receta</h1>\n                        <div class=\"form-group\">\n                            <label for=\"recipe\"><i class=\"fas fa-file-signature fas-form\"></i>Nombre de la receta</label>\n                            <input type=\"text\" name=\"\" class=\"form-control-secondary\" id=\"recipe\">\n                        </div>\n                    </div>");
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo1);
   numHijo++; //ejecutar una llamada a la BD para que nos de los ingredientes que hay hasta el momento (TODOS los ingredientes)
   //esta parte es para dibujar todos los ingredientes que tengamos de la BD y por cada ingrediente se debera dibujar
   //su respectivo html y agregar al padre que le corresponde
 
-  var hijo2 = "<div class=\"row justify-content-center\" id=\"hijo-".concat(numHijo, "\">\n                        <div class=\"col-3\">\n                            <label for=\"\">Nombre de ingrediente 1</label>\n                        </div>\n                        <div class=\"col-1\">\n                            <input type=\"checkbox\" name=\"\" id=\"\">\n                        </div>\n                    </div>");
+  var hijo2 = " <div class=\"row-form\" id=\"hijo-".concat(numHijo, "\">\n                        <div class=\"form-group\">\n                            <label for=\"\">Nombre de ingrediente 1</label>\n                            <input type=\"checkbox\" name=\"\" id=\"\">\n                        </div>\n                    </div>");
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo2);
   numHijo++;
-  var hijo3 = "<div class=\"row justify-content-center\" id=\"hijo-".concat(numHijo, "\">\n                        <div class=\"col-3\">\n                            <label for=\"\">Nombre de ingrediente 2</label>\n                        </div>\n                        <div class=\"col-1\">\n                            <input type=\"checkbox\" name=\"\" id=\"\">\n                        </div>\n                    </div>");
+  var hijo3 = "<div class=\"row-form\" id=\"hijo-".concat(numHijo, "\">\n                        <div class=\"form-group\">\n                            <label for=\"\">Nombre de ingrediente 2</label>\n                            <input type=\"checkbox\" name=\"\" id=\"\">\n                        </div>\n                    </div>");
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo3);
   numHijo++;
+<<<<<<< HEAD
   var hijo4 = "<div class=\"row mt-2 justify-content-center\" id=\"hijo-receta-botones\">\n                        <div class=\"col-2\">\n                            <button class=\"btn-atras\">Atras</button>\n                        </div>\n                        <div class=\"col-2\">\n                            <button class=\"btn-siguiente\">Siguiente</button>\n                        </div>\n                        <div class=\"col-2\">\n                            <button class=\"btn-cancelar\">Cancelar</button>\n                        </div>\n                    </div>";
+=======
+  var hijo4 = "<div class=\"row-buttons\" id=\"hijo-".concat(numHijo, "\">\n                        <button class=\"btn btn-secondary\"><i class=\"fas fa-arrow-left\"></i>Atr\xE1s</button>\n                        <button class=\"btn btn-primary\" id=\"btn_next\"><i class=\"fas fa-arrow-right\"></i>Siguiente</button>\n                        <button class=\"btn btn-secondary\"><i class=\"fas fa-window-close\"></i>Cancelar</button>\n                    </div>");
+>>>>>>> main
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo4);
 };
 var dibujarSegundaFase = function dibujarSegundaFase(ingredientes) {
   var numIngrediente = 0; //vamos a dibujar cards con los ingredientes que fueron seleccionados y que nos pasaran
   //por el momento pondremos una card solamente
 
-  var hijo = "<div class=\"row justify-content-center\" id=\"ingrediente-".concat(numIngrediente, "\">\n                    <div class=\"col-4\">\n                        <div class=\"card\">\n                            <h4 class=\"card-header\">Nombre Ingrediente</h4>\n                            <div class=\"card-body\">\n\n                                <div class=\"row\">\n                                    <div class=\"col-6\">\n                                        <h5 class=\"card-text\">Cantidad 1kg</h5>\n                                    </div>\n                                    <div class=\"col-6\">\n                                        <h5 class=\"card-text\">Costo $150</h5>\n                                    </div>\n                                </div>\n\n                                <div class=\"row mt-4\">\n                                    <div class=\"col-6\">\n                                        <h5 class=\"card-text\">Cantidad a usar</h5>\n                                    </div>\n                                    <div class=\"col-6\">\n                                        <input type=\"text\" name=\"\" id=\"\" placeholder=\"0.500\" class=\"text-center\">\n                                    </div>\n                                </div>\n\n                                <div class=\"row mt-2 justify-content-center\">\n                                    <div class=\"col-12 align-items-center\">\n                                        <h4 class=\"card-text text-center\">$ 75.00</h4>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>");
+  var hijo = "<div class=\"container-cards\" id=\"ingrediente-".concat(numIngrediente, "\">\n                    <div class=\"card\">\n                        <h3 class=\"card-title\">Nombre Ingrediente</h3>\n                        <h4 class=\"card-text\">Cantidad 1kg</h4>\n                        <h4 class=\"card-text\">Costo $150</h4>\n                        <h4 class=\"card-text\">Cantidad a usar:</h4>\n                        <input type=\"text\" name=\"\" id=\"\" placeholder=\"0.0 gr.\" class=\"form-control-secondary\">\n                        <h3 class=\"card-text\">Total: $75.00</h3>\n                    </div>\n                </div>");
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
 };
 var dibujarTerceraFase = function dibujarTerceraFase(receta) {
@@ -183,6 +187,7 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListen
     _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarPrimeraFase();
   }
 
+<<<<<<< HEAD
   if (e.target.matches('.btn-siguiente')) {
     if (contadorSiguiente === 0) {
       //guardamos el nombre de la receta
@@ -206,6 +211,16 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListen
       _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(contadorSiguiente);
       contadorSiguiente = 0;
     }
+=======
+  if (e.target.matches('#btn_next')) {
+    // if(e.target.matches('.btn-siguiente')){
+    //guardamos el nombre de la receta
+    //guardamos los checbox seleccionados
+    //borramos lo que hay en la vista, excepto los botones "atras" "siguiente" "cancelar"
+    _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(); //dibujamos la siguiente parte pasando contador y los ingredientes seleccionados
+
+    _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarSegundaFase();
+>>>>>>> main
   }
 });
 })();
