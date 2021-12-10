@@ -42,23 +42,10 @@ export const dibujarPrimeraFase = () => {
     elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo3);
     numHijo++;
 
-<<<<<<< HEAD
-    const hijo4 = `<div class="row mt-2 justify-content-center" id="hijo-receta-botones">
-                        <div class="col-2">
-                            <button class="btn-atras">Atras</button>
-                        </div>
-                        <div class="col-2">
-                            <button class="btn-siguiente">Siguiente</button>
-                        </div>
-                        <div class="col-2">
-                            <button class="btn-cancelar">Cancelar</button>
-                        </div>
-=======
     const hijo4 = `<div class="row-buttons" id="hijo-${numHijo}">
                         <button class="btn btn-secondary"><i class="fas fa-arrow-left"></i>Atrás</button>
                         <button class="btn btn-primary" id="btn_next"><i class="fas fa-arrow-right"></i>Siguiente</button>
                         <button class="btn btn-secondary"><i class="fas fa-window-close"></i>Cancelar</button>
->>>>>>> main
                     </div>`;
     elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo4);
 };
