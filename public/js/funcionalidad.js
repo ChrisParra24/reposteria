@@ -61,11 +61,7 @@ var dibujarPrimeraFase = function dibujarPrimeraFase() {
   var hijo3 = "<div class=\"row-form\" id=\"hijo-".concat(numHijo, "\">\n                        <div class=\"form-group\">\n                            <label for=\"\">Nombre de ingrediente 2</label>\n                            <input type=\"checkbox\" name=\"\" id=\"\">\n                        </div>\n                    </div>");
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo3);
   numHijo++;
-<<<<<<< HEAD
-  var hijo4 = "<div class=\"row mt-2 justify-content-center\" id=\"hijo-receta-botones\">\n                        <div class=\"col-2\">\n                            <button class=\"btn-atras\">Atras</button>\n                        </div>\n                        <div class=\"col-2\">\n                            <button class=\"btn-siguiente\">Siguiente</button>\n                        </div>\n                        <div class=\"col-2\">\n                            <button class=\"btn-cancelar\">Cancelar</button>\n                        </div>\n                    </div>";
-=======
   var hijo4 = "<div class=\"row-buttons\" id=\"hijo-".concat(numHijo, "\">\n                        <button class=\"btn btn-secondary\"><i class=\"fas fa-arrow-left\"></i>Atr\xE1s</button>\n                        <button class=\"btn btn-primary\" id=\"btn_next\"><i class=\"fas fa-arrow-right\"></i>Siguiente</button>\n                        <button class=\"btn btn-secondary\"><i class=\"fas fa-window-close\"></i>Cancelar</button>\n                    </div>");
->>>>>>> main
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo4);
 };
 var dibujarSegundaFase = function dibujarSegundaFase(ingredientes) {
@@ -77,7 +73,7 @@ var dibujarSegundaFase = function dibujarSegundaFase(ingredientes) {
 };
 var dibujarTerceraFase = function dibujarTerceraFase(receta) {
   //let numResumen = 0;
-  var hijo = "<div class=\"row mt-3 justify-content-center\" id=\"resumen-0\">\n                    <div class=\"col-12\">\n                        <h1>Receta: Nombre_de_la_receta</h1>\n                    </div>\n                </div>\n                <div class=\"row mt-5 justify-content-center\" id=\"resumen-1\">\n                    <div class=\"col-12\">\n                        <h3>Ingredientes:</h3>\n                    </div>\n                </div>\n                <div class=\"row mt-3 justify-content-center\" id=\"resumen-2\">\n                    <div class=\"col-6\">\n                        <h5>Nombre_inrediente 200gr = $ 00.00</h5>\n                    </div>\n                </div>\n                <div class=\"row mt-5 justify-content-center\" id=\"resumen-3\">\n                    <div class=\"col-12\">\n                        <h2>Total: $520.20</h2>\n                    </div>\n                </div>";
+  var hijo = "<div class=\"row-form\" id=\"resumen-0\">\n                    <h2>Receta: <span class=\"card-title\">Nombre de la receta</span></h2>\n                </div>\n                <div class=\"row-form\" id=\"resumen-1\">\n                    <h3 class=\"card-text\">Ingredientes:</h3>\n                </div>\n                <div class=\"row-form\" id=\"resumen-2\">\n                        <h5 class=\"card-text\">Nombre inrediente 200gr = $ 00.00</h5>\n                </div>\n                <div class=\"row-form\" id=\"resumen-3\">\n                    <h2 class=\"card-text\">Total: $520.20</h2>\n                </div>";
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
 };
 var removerHijo = function removerHijo(contador) {
@@ -185,12 +181,17 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListen
   if (e.target.matches('.buttonNuevaRecipe')) {
     _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(contadorSiguiente);
     _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarPrimeraFase();
-  }
+  } // <<<<<<< HEAD
 
-<<<<<<< HEAD
-  if (e.target.matches('.btn-siguiente')) {
+
+  if (e.target.matches('#btn_next')) {
     if (contadorSiguiente === 0) {
       //guardamos el nombre de la receta
+      // =======
+      //     if(e.target.matches('#btn_next')){
+      //     // if(e.target.matches('.btn-siguiente')){
+      //         //guardamos el nombre de la receta
+      // >>>>>>> main
       //guardamos los checbox seleccionados
       //borramos lo que hay en la vista, excepto los botones "atras" "siguiente" "cancelar"
       _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(contadorSiguiente); //dibujamos la siguiente parte pasando contador y los ingredientes seleccionados
@@ -211,16 +212,6 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListen
       _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(contadorSiguiente);
       contadorSiguiente = 0;
     }
-=======
-  if (e.target.matches('#btn_next')) {
-    // if(e.target.matches('.btn-siguiente')){
-    //guardamos el nombre de la receta
-    //guardamos los checbox seleccionados
-    //borramos lo que hay en la vista, excepto los botones "atras" "siguiente" "cancelar"
-    _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(); //dibujamos la siguiente parte pasando contador y los ingredientes seleccionados
-
-    _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarSegundaFase();
->>>>>>> main
   }
 });
 })();

@@ -69,25 +69,17 @@ export const dibujarSegundaFase = (ingredientes) => {
 
 export const dibujarTerceraFase = (receta) => {
     //let numResumen = 0;
-    const hijo = `<div class="row mt-3 justify-content-center" id="resumen-0">
-                    <div class="col-12">
-                        <h1>Receta: Nombre_de_la_receta</h1>
-                    </div>
+    const hijo = `<div class="row-form" id="resumen-0">
+                    <h2>Receta: <span class="card-title">Nombre de la receta</span></h2>
                 </div>
-                <div class="row mt-5 justify-content-center" id="resumen-1">
-                    <div class="col-12">
-                        <h3>Ingredientes:</h3>
-                    </div>
+                <div class="row-form" id="resumen-1">
+                    <h3 class="card-text">Ingredientes:</h3>
                 </div>
-                <div class="row mt-3 justify-content-center" id="resumen-2">
-                    <div class="col-6">
-                        <h5>Nombre_inrediente 200gr = $ 00.00</h5>
-                    </div>
+                <div class="row-form" id="resumen-2">
+                        <h5 class="card-text">Nombre inrediente 200gr = $ 00.00</h5>
                 </div>
-                <div class="row mt-5 justify-content-center" id="resumen-3">
-                    <div class="col-12">
-                        <h2>Total: $520.20</h2>
-                    </div>
+                <div class="row-form" id="resumen-3">
+                    <h2 class="card-text">Total: $520.20</h2>
                 </div>`;
     elementos.padreForRecipe.insertAdjacentHTML('afterbegin',hijo);
 };

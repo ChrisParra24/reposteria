@@ -28,16 +28,6 @@
             </ul>
         </nav>
     </header>
-    <!-- <div class="container-cards" id="ingrediente-${numIngrediente}">
-            <div class="card">
-                <h3 class="card-title">Nombre Ingrediente</h3>
-                <h4 class="card-text">Cantidad 1kg</h4>
-                <h4 class="card-text">Costo $150</h4>
-                <h4 class="card-text">Cantidad a usar:</h4>
-                <input type="number" step="any" name="" id="" placeholder="0.0 gr." class="form-control-secondary">
-                <h3 class="card-text">Total: $75.00</h3>
-            </div>
-        </div> -->
     @yield('content')
     <script src="{{ asset('js/menu-responsive.js?v=1.1')}}"></script>
     <script src="{{ asset('js/funcionalidad.js?v=1.1')}}"></script>
