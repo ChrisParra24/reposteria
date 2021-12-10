@@ -4,6 +4,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RecipeController;
 use Illuminate\Support\Facades\Route;
 
+/** Auth with social media */
+use Laravel\Socialite\Facades\Socialite;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +34,20 @@ Route::get('/', LoginController::class)->name('login');
 
 Route::get('/panel/receta',[RecipeController::class,'index'])->name('panel.recipe.index');
 
+Route::get('facebook/auth/redirect', function () {
+    return Socialite::driver('facebook')->redirect();
+});
+
+Route::get('facebook/auth/callback', function () {
+    $user = Socialite::driver('facebook')->user();
+    // $user->token
+});
+
+Route::get('google/auth/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('google/auth/callback', function () {
+    $user = Socialite::driver('google')->user();
+    // $user->token
+});
