@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/8d4425b4c8.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{ asset('css/style.css?v=1.15') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css?v=1.18') }}">
     <title>@yield('title')</title>
 </head>
 <body>
@@ -24,7 +24,14 @@
                     <li class="list-item"><a href="#" class="navbar-link" id="buttonIngredient"><i class="fas fa-balance-scale-right option-icon"></i>Ingrediente</a></li>
                     <li class="list-item"><a href="#" class="navbar-link" id="buttonIngredient"><i class="fas fa-hand-holding-usd option-icon"></i>Cotización</a></li>
                 </ul>
-                <div class="user-container"><i class="fas fa-user-circle icon"></i><span>David Tlahuapa Coraza</span></div>
+                @auth
+                    <div class="user-container">
+                        <figure class="figure-user">
+                            <img src="{{auth()->user()->image()}}" alt="image profile">
+                        </figure>
+                        <span>{{auth()->user()->username()}}</span>
+                    </div>
+                @endauth
             </ul>
         </nav>
     </header>

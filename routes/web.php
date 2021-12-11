@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Route;
 
 /** Auth with social media */
 use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
+use App\Models\SocialProfile;
 
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,20 +37,77 @@ Route::get('/', LoginController::class)->name('login');
 
 Route::get('/panel/receta',[RecipeController::class,'index'])->name('panel.recipe.index');
 
-Route::get('facebook/auth/redirect', function () {
+Route::get('login/facebook', function () {
     return Socialite::driver('facebook')->redirect();
 });
 
-Route::get('facebook/auth/callback', function () {
-    $user = Socialite::driver('facebook')->user();
+Route::get('login/facebook/callback', function (Request $request) {
+    if($request->get('error')){
+        return redirect()->route('login');
+    }
+
+    /** Recupera información del perfil */
+    $userSocialite = Socialite::driver('facebook')->user();
+
+    /** Busca registro en SocialProfile */
+    $social_profile = SocialProfile::where('social_id', $userSocialite->getId())
+    ->where('social_name', 'facebook')->first();
+
+    if(!$social_profile){
+        /** Comprueba que no haya registro */
+        $user = User::where('email', $userSocialite->getEmail())->first();
+        if(!$user){
+            $user = User::create([
+                'name'=> $userSocialite->getName(),
+                'email'=> $userSocialite->getEmail(),
+            ]);
+        }
+
+        $social_profile = SocialProfile::create([
+            'user_id' => $user->id,
+            'social_id' => $userSocialite->getId(),
+            'social_name' => 'facebook',
+            'social_avatar' => $userSocialite->getAvatar(),
+        ]);
+    }
+    auth()->login($social_profile->$user);
+    return redirect()->route('panel.recipe.index');
     // $user->token
 });
 
-Route::get('google/auth/redirect', function () {
+Route::get('login/google', function () {
     return Socialite::driver('google')->redirect();
 });
 
-Route::get('google/auth/callback', function () {
-    $user = Socialite::driver('google')->user();
+Route::get('login/google/callback', function (Request $request) {
+    if($request->get('error')){
+        return redirect()->route('login');
+    }
+    /** Recupera información del perfil */
+    $userSocialite = Socialite::driver('google')->user();
+
+    /** Busca registro en SocialProfile */
+    $social_profile = SocialProfile::where('social_id', $userSocialite->getId())
+    ->where('social_name', 'google')->first();
+
+    if(!$social_profile){
+        /** Comprueba que no haya registro */
+        $user = User::where('email', $userSocialite->getEmail())->first();
+        if(!$user){
+            $user = User::create([
+                'name'=> $userSocialite->getName(),
+                'email'=> $userSocialite->getEmail(),
+            ]);
+        }
+
+        $social_profile = SocialProfile::create([
+            'user_id' => $user->id,
+            'social_id' => $userSocialite->getId(),
+            'social_name' => 'google',
+            'social_avatar' => $userSocialite->getAvatar(),
+        ]);
+    }
+    auth()->login($social_profile->user);
+    return redirect()->route('panel.recipe.index');
     // $user->token
 });

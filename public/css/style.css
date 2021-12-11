@@ -10,6 +10,8 @@
     --dark: rgb(32, 32, 32);
     --text-light: #fff;
     --text-gray: #7f807d;
+    --text-dark: #000;
+    --color-facebook: #3b5998;
 }
 *{
     margin: 0;
@@ -46,7 +48,7 @@ body{
 }
 .btn:hover{
     cursor: pointer;
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 .form{
     background-color: #fff;
@@ -70,12 +72,15 @@ body{
     transform: scale(1.4);
     color: var(--contrast-color);
 }
-.fas{
+.fas, .fab{
     margin: 0 4px;
     color: var(--text-light);
 }
 .icon{
     font-size: 1.4rem;
+}
+.icon-form{
+    color: var(--primary-color);
 }
 .close{
     display: none;
@@ -83,7 +88,9 @@ body{
 .open{
     display: block;
 }
-
+.text-center{
+    text-align: center;
+}
 
 /** LOGIN */
 .container-main{
@@ -99,12 +106,15 @@ body{
     min-width: 270px;
     max-width: 25%;
     margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    filter: opacity(0.87);
 }
 .form-group{
     margin-top: 35px;
     display: flex;
     justify-content: space-between;
-    color: var(--text-gray);
+    color: var(--text-dark);
     text-align: left;
 }
 .form-control{
@@ -131,7 +141,29 @@ body{
 .btn-primary:hover{
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
-
+.container-social{
+    margin-top: 20px;
+}
+.btn-social{
+    display: block;
+    margin-bottom: 15px;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 7px;
+}
+.btn-facebook{
+    color: var(--text-light);
+    background-color: var(--color-facebook);
+}
+.btn-google{
+    color: var(--text-dark);
+    border: 1px solid var(--text-gray);
+}
+a>img{
+    width: 16px;
+    margin-bottom: -3px;
+}
 
 
 /** Panel */
@@ -161,7 +193,16 @@ body{
     cursor: pointer;
     text-align: center;
 }
-
+.figure-user{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.figure-user>img{
+    width: inherit;
+    height: inherit;
+}
 .container-fluid{
     margin: 40px;
     display: flex;
