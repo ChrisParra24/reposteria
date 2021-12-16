@@ -4,7 +4,7 @@ export const elementos = {
     buttonCost : document.getElementById('buttonCost'),
     padreForRecipe : document.getElementById('cuerpo'),
     buttonRecipeNew : document.querySelector('.buttonNuevaRecipe'),
-    buttonRecipeModify : document.getElementById('buttonModificarRecipe'),
+    buttonRecipeModify : document.querySelector('buttonModificarRecipe'),
     buttonAtras : document.querySelector('btn-atras'),
     buttonSiguiente : document.querySelector('btn-siguiente'),
     buttonCancelar : document.querySelector('btn-cancelar')

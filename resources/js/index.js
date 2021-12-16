@@ -46,5 +46,14 @@ elementos.padreForRecipe.addEventListener('click', (e)=>{
             contadorSiguiente = 0;
         }
     }
+    if(e.target.matches('.buttonModificarRecipe')){
+        //borrar los botones que hay
+        recipeView.removerHijo();
+        //dibujamos la vista de actualizar
+        recipeView.dibujarActualizar();
+    }
+    if(e.target.matches('.btn-cargar-datos-ingredientes')){
+        //agregar a la vista los ingredientes para poder actualizarlos
+    }
 
 });

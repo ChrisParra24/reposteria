@@ -6,7 +6,7 @@ export const dibujaBotonPrimeros = (id0,id1,id2) => {
                             <button type="button" class="btn btn-secondary ${id1}" id="${id1}">Nueva</button>
                         </div>
                         <div class="d-grid gap-2 col-3">
-                            <button type="button" class="btn btn-secondary ${id1}" id="${id2}">Actualizar</button>
+                            <button type="button" class="btn btn-secondary ${id2}" id="${id2}">Actualizar</button>
                         </div>
                     </div>`;
     elementos.padreForRecipe.insertAdjacentHTML('afterbegin',hijo);
@@ -128,6 +128,21 @@ export const dibujarTerceraFase = (receta) => {
                     </div>
                 </div>`;
     elementos.padreForRecipe.insertAdjacentHTML('afterbegin',hijo);
+};
+
+export const dibujarActualizar = ()=>{
+    //debemos de tener todas las recetas y mandarlas a dibujar
+    const hijo = `<div id="actualiza-1">
+                    <h4>Receta</h4>
+                    <select name="" id="">
+                        <option value="">Seleccione una receta</option>
+                        <option value="">Receta 1</option>
+                        <option value="">Receta 2</option>
+                        <option value="">Receta 4</option>
+                    </select>
+                    <button class="btn-cargar-datos-ingredientes">Cargar datos</button>
+                </div>`;
+    elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo);
 };
 
 export const removerHijo = (contador) => {

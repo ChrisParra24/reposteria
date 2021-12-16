@@ -18,7 +18,7 @@ var elementos = {
   buttonCost: document.getElementById('buttonCost'),
   padreForRecipe: document.getElementById('cuerpo'),
   buttonRecipeNew: document.querySelector('.buttonNuevaRecipe'),
-  buttonRecipeModify: document.getElementById('buttonModificarRecipe'),
+  buttonRecipeModify: document.querySelector('buttonModificarRecipe'),
   buttonAtras: document.querySelector('btn-atras'),
   buttonSiguiente: document.querySelector('btn-siguiente'),
   buttonCancelar: document.querySelector('btn-cancelar')
@@ -38,12 +38,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "dibujarPrimeraFase": () => (/* binding */ dibujarPrimeraFase),
 /* harmony export */   "dibujarSegundaFase": () => (/* binding */ dibujarSegundaFase),
 /* harmony export */   "dibujarTerceraFase": () => (/* binding */ dibujarTerceraFase),
+/* harmony export */   "dibujarActualizar": () => (/* binding */ dibujarActualizar),
 /* harmony export */   "removerHijo": () => (/* binding */ removerHijo)
 /* harmony export */ });
 /* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./resources/js/views/base.js");
 
 var dibujaBotonPrimeros = function dibujaBotonPrimeros(id0, id1, id2) {
-  var hijo = "<div class=\"row justify-content-center\" id=\"".concat(id0, "\">\n                        <div class=\"d-grid gap-2 col-3\">\n                            <button type=\"button\" class=\"btn btn-secondary ").concat(id1, "\" id=\"").concat(id1, "\">Nueva</button>\n                        </div>\n                        <div class=\"d-grid gap-2 col-3\">\n                            <button type=\"button\" class=\"btn btn-secondary ").concat(id1, "\" id=\"").concat(id2, "\">Actualizar</button>\n                        </div>\n                    </div>");
+  var hijo = "<div class=\"row justify-content-center\" id=\"".concat(id0, "\">\n                        <div class=\"d-grid gap-2 col-3\">\n                            <button type=\"button\" class=\"btn btn-secondary ").concat(id1, "\" id=\"").concat(id1, "\">Nueva</button>\n                        </div>\n                        <div class=\"d-grid gap-2 col-3\">\n                            <button type=\"button\" class=\"btn btn-secondary ").concat(id2, "\" id=\"").concat(id2, "\">Actualizar</button>\n                        </div>\n                    </div>");
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
 };
 var dibujarPrimeraFase = function dibujarPrimeraFase() {
@@ -75,6 +76,11 @@ var dibujarTerceraFase = function dibujarTerceraFase(receta) {
   //let numResumen = 0;
   var hijo = "<div class=\"row mt-3 justify-content-center\" id=\"resumen-0\">\n                    <div class=\"col-12\">\n                        <h1>Receta: Nombre_de_la_receta</h1>\n                    </div>\n                </div>\n                <div class=\"row mt-5 justify-content-center\" id=\"resumen-1\">\n                    <div class=\"col-12\">\n                        <h3>Ingredientes:</h3>\n                    </div>\n                </div>\n                <div class=\"row mt-3 justify-content-center\" id=\"resumen-2\">\n                    <div class=\"col-6\">\n                        <h5>Nombre_inrediente 200gr = $ 00.00</h5>\n                    </div>\n                </div>\n                <div class=\"row mt-5 justify-content-center\" id=\"resumen-3\">\n                    <div class=\"col-12\">\n                        <h2>Total: $520.20</h2>\n                    </div>\n                </div>";
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
+};
+var dibujarActualizar = function dibujarActualizar() {
+  //debemos de tener todas las recetas y mandarlas a dibujar
+  var hijo = "<div id=\"actualiza-1\">\n                    <h4>Receta</h4>\n                    <select name=\"\" id=\"\">\n                        <option value=\"\">Seleccione una receta</option>\n                        <option value=\"\">Receta 1</option>\n                        <option value=\"\">Receta 2</option>\n                        <option value=\"\">Receta 4</option>\n                    </select>\n                    <button class=\"btn-cargar-datos-ingredientes\">Cargar datos</button>\n                </div>";
+  _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo);
 };
 var removerHijo = function removerHijo(contador) {
   var numHijos = _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.childElementCount;
@@ -206,6 +212,17 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListen
       _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(contadorSiguiente);
       contadorSiguiente = 0;
     }
+  }
+
+  if (e.target.matches('.buttonModificarRecipe')) {
+    //borrar los botones que hay
+    _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(); //dibujamos la vista de actualizar
+
+    _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarActualizar();
+  }
+
+  if (e.target.matches('.btn-cargar-datos-ingredientes')) {
+    console.log('Hola mundo');
   }
 });
 })();
