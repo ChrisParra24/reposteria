@@ -44,11 +44,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./resources/js/views/base.js");
 
 var dibujaBotonPrimeros = function dibujaBotonPrimeros(id0, id1, id2) {
-<<<<<<< HEAD
-  var hijo = "<div class=\"row justify-content-center\" id=\"".concat(id0, "\">\n                        <div class=\"d-grid gap-2 col-3\">\n                            <button type=\"button\" class=\"btn btn-secondary ").concat(id1, "\" id=\"").concat(id1, "\">Nueva</button>\n                        </div>\n                        <div class=\"d-grid gap-2 col-3\">\n                            <button type=\"button\" class=\"btn btn-secondary ").concat(id2, "\" id=\"").concat(id2, "\">Actualizar</button>\n                        </div>\n                    </div>");
-=======
+  // const hijo = `<div class="row justify-content-center" id="${id0}">
+  //                     <div class="d-grid gap-2 col-3">
+  //                         <button type="button" class="btn btn-secondary ${id1}" id="${id1}">Nueva</button>
+  //                     </div>
+  //                     <div class="d-grid gap-2 col-3">
+  //                         <button type="button" class="btn btn-secondary ${id2}" id="${id2}">Actualizar</button>
+  //                     </div>
+  //                 </div>`;
   var hijo = "<div class=\"container-fluid\" id=\"".concat(id0, "\">\n                    <button type=\"button\" class=\"btn btn-secondary ").concat(id1, "\" id=\"").concat(id1, "\"><i class=\"fas fa-plus-square\"></i>Nueva</button>\n                    <button type=\"button\" class=\"btn btn-secondary ").concat(id2, "\" id=\"").concat(id2, "\"><i class=\"fas fa-sync-alt\"></i>Actualizar</button>\n                </div>");
->>>>>>> f86e722278db53420604b1ae68e18d944c2bf3fd
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
 };
 var dibujarPrimeraFase = function dibujarPrimeraFase() {
@@ -231,8 +235,7 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListen
     _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarActualizar();
   }
 
-  if (e.target.matches('.btn-cargar-datos-ingredientes')) {
-    console.log('Hola mundo');
+  if (e.target.matches('.btn-cargar-datos-ingredientes')) {//agregar a la vista los ingredientes para poder actualizarlos
   }
 });
 })();

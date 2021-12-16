@@ -1,21 +1,19 @@
 import {elementos} from './base';
 
 export const dibujaBotonPrimeros = (id0,id1,id2) => {
-<<<<<<< HEAD
-    const hijo = `<div class="row justify-content-center" id="${id0}">
-                        <div class="d-grid gap-2 col-3">
-                            <button type="button" class="btn btn-secondary ${id1}" id="${id1}">Nueva</button>
-                        </div>
-                        <div class="d-grid gap-2 col-3">
-                            <button type="button" class="btn btn-secondary ${id2}" id="${id2}">Actualizar</button>
-                        </div>
-                    </div>`;
-=======
+    // const hijo = `<div class="row justify-content-center" id="${id0}">
+    //                     <div class="d-grid gap-2 col-3">
+    //                         <button type="button" class="btn btn-secondary ${id1}" id="${id1}">Nueva</button>
+    //                     </div>
+    //                     <div class="d-grid gap-2 col-3">
+    //                         <button type="button" class="btn btn-secondary ${id2}" id="${id2}">Actualizar</button>
+    //                     </div>
+    //                 </div>`;
+
     const hijo = `<div class="container-fluid" id="${id0}">
                     <button type="button" class="btn btn-secondary ${id1}" id="${id1}"><i class="fas fa-plus-square"></i>Nueva</button>
                     <button type="button" class="btn btn-secondary ${id2}" id="${id2}"><i class="fas fa-sync-alt"></i>Actualizar</button>
                 </div>`;
->>>>>>> f86e722278db53420604b1ae68e18d944c2bf3fd
     elementos.padreForRecipe.insertAdjacentHTML('afterbegin',hijo);
 };
 
