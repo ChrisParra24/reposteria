@@ -1,6 +1,7 @@
 import {elementos} from './base';
 
 export const dibujaBotonPrimeros = (id0,id1,id2) => {
+<<<<<<< HEAD
     const hijo = `<div class="row justify-content-center" id="${id0}">
                         <div class="d-grid gap-2 col-3">
                             <button type="button" class="btn btn-secondary ${id1}" id="${id1}">Nueva</button>
@@ -9,18 +10,23 @@ export const dibujaBotonPrimeros = (id0,id1,id2) => {
                             <button type="button" class="btn btn-secondary ${id2}" id="${id2}">Actualizar</button>
                         </div>
                     </div>`;
+=======
+    const hijo = `<div class="container-fluid" id="${id0}">
+                    <button type="button" class="btn btn-secondary ${id1}" id="${id1}"><i class="fas fa-plus-square"></i>Nueva</button>
+                    <button type="button" class="btn btn-secondary ${id2}" id="${id2}"><i class="fas fa-sync-alt"></i>Actualizar</button>
+                </div>`;
+>>>>>>> f86e722278db53420604b1ae68e18d944c2bf3fd
     elementos.padreForRecipe.insertAdjacentHTML('afterbegin',hijo);
 };
 
 export const dibujarPrimeraFase = () => {
     let numHijo = 0;
     //primero se dibujara: 1) etiqueta y su text input
-    const hijo1 = `<div class="row justify-content-center" id="hijo-${numHijo}">
-                        <div class="col-2">
-                            <label for="">Nombre de la receta</label>
-                        </div>
-                        <div class="col-4">
-                            <input type="text" name="" id="">
+    const hijo1 = `<div class="row-form" id="hijo-${numHijo}">
+                        <h1 class="title-section">Nueva receta</h1>
+                        <div class="form-group">
+                            <label for="recipe"><i class="fas fa-file-signature fas-form"></i>Nombre de la receta</label>
+                            <input type="text" name="" class="form-control-secondary" id="recipe">
                         </div>
                     </div>`;
     elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo1);
@@ -29,38 +35,28 @@ export const dibujarPrimeraFase = () => {
 
     //esta parte es para dibujar todos los ingredientes que tengamos de la BD y por cada ingrediente se debera dibujar
     //su respectivo html y agregar al padre que le corresponde
-    const hijo2 = `<div class="row justify-content-center" id="hijo-${numHijo}">
-                        <div class="col-3">
+    const hijo2 = ` <div class="row-form" id="hijo-${numHijo}">
+                        <div class="form-group">
                             <label for="">Nombre de ingrediente 1</label>
-                        </div>
-                        <div class="col-1">
                             <input type="checkbox" name="" id="">
                         </div>
                     </div>`
     elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo2);
     numHijo++;
 
-    const hijo3 =   `<div class="row justify-content-center" id="hijo-${numHijo}">
-                        <div class="col-3">
+    const hijo3 =   `<div class="row-form" id="hijo-${numHijo}">
+                        <div class="form-group">
                             <label for="">Nombre de ingrediente 2</label>
-                        </div>
-                        <div class="col-1">
                             <input type="checkbox" name="" id="">
                         </div>
                     </div>`;
     elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo3);
     numHijo++;
 
-    const hijo4 = `<div class="row mt-2 justify-content-center" id="hijo-receta-botones">
-                        <div class="col-2">
-                            <button class="btn-atras">Atras</button>
-                        </div>
-                        <div class="col-2">
-                            <button class="btn-siguiente">Siguiente</button>
-                        </div>
-                        <div class="col-2">
-                            <button class="btn-cancelar">Cancelar</button>
-                        </div>
+    const hijo4 = `<div class="row-buttons" id="hijo-${numHijo}">
+                        <button class="btn btn-secondary"><i class="fas fa-arrow-left"></i>Atrás</button>
+                        <button class="btn btn-primary" id="btn_next"><i class="fas fa-arrow-right"></i>Siguiente</button>
+                        <button class="btn btn-secondary"><i class="fas fa-window-close"></i>Cancelar</button>
                     </div>`;
     elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo4);
 };
@@ -69,37 +65,14 @@ export const dibujarSegundaFase = (ingredientes) => {
     const numIngrediente=0;
     //vamos a dibujar cards con los ingredientes que fueron seleccionados y que nos pasaran
     //por el momento pondremos una card solamente
-    const hijo = `<div class="row justify-content-center" id="ingrediente-${numIngrediente}">
-                    <div class="col-4">
-                        <div class="card">
-                            <h4 class="card-header">Nombre Ingrediente</h4>
-                            <div class="card-body">
-
-                                <div class="row">
-                                    <div class="col-6">
-                                        <h5 class="card-text">Cantidad 1kg</h5>
-                                    </div>
-                                    <div class="col-6">
-                                        <h5 class="card-text">Costo $150</h5>
-                                    </div>
-                                </div>
-
-                                <div class="row mt-4">
-                                    <div class="col-6">
-                                        <h5 class="card-text">Cantidad a usar</h5>
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="text" name="" id="" placeholder="0.500" class="text-center">
-                                    </div>
-                                </div>
-
-                                <div class="row mt-2 justify-content-center">
-                                    <div class="col-12 align-items-center">
-                                        <h4 class="card-text text-center">$ 75.00</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    const hijo = `<div class="container-cards" id="ingrediente-${numIngrediente}">
+                    <div class="card">
+                        <h3 class="card-title">Nombre Ingrediente</h3>
+                        <h4 class="card-text">Cantidad 1kg</h4>
+                        <h4 class="card-text">Costo $150</h4>
+                        <h4 class="card-text">Cantidad a usar:</h4>
+                        <input type="text" name="" id="" placeholder="0.0 gr." class="form-control-secondary">
+                        <h3 class="card-text">Total: $75.00</h3>
                     </div>
                 </div>`;
     elementos.padreForRecipe.insertAdjacentHTML('afterbegin',hijo);
@@ -107,25 +80,17 @@ export const dibujarSegundaFase = (ingredientes) => {
 
 export const dibujarTerceraFase = (receta) => {
     //let numResumen = 0;
-    const hijo = `<div class="row mt-3 justify-content-center" id="resumen-0">
-                    <div class="col-12">
-                        <h1>Receta: Nombre_de_la_receta</h1>
-                    </div>
+    const hijo = `<div class="row-form" id="resumen-0">
+                    <h2>Receta: <span class="card-title">Nombre de la receta</span></h2>
                 </div>
-                <div class="row mt-5 justify-content-center" id="resumen-1">
-                    <div class="col-12">
-                        <h3>Ingredientes:</h3>
-                    </div>
+                <div class="row-form" id="resumen-1">
+                    <h3 class="card-text">Ingredientes:</h3>
                 </div>
-                <div class="row mt-3 justify-content-center" id="resumen-2">
-                    <div class="col-6">
-                        <h5>Nombre_inrediente 200gr = $ 00.00</h5>
-                    </div>
+                <div class="row-form" id="resumen-2">
+                        <h5 class="card-text">Nombre inrediente 200gr = $ 00.00</h5>
                 </div>
-                <div class="row mt-5 justify-content-center" id="resumen-3">
-                    <div class="col-12">
-                        <h2>Total: $520.20</h2>
-                    </div>
+                <div class="row-form" id="resumen-3">
+                    <h2 class="card-text">Total: $520.20</h2>
                 </div>`;
     elementos.padreForRecipe.insertAdjacentHTML('afterbegin',hijo);
 };
