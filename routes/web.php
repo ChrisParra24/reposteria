@@ -10,6 +10,9 @@ use App\Models\User;
 use App\Models\SocialProfile;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -111,3 +114,11 @@ Route::get('login/google/callback', function (Request $request) {
     return redirect()->route('panel.recipe.index');
     // $user->token
 });
+
+
+Route::post('/logout', function(Request $request){
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect()->route('login');
+})->name('logout');
