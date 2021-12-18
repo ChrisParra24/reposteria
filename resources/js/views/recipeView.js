@@ -1,6 +1,15 @@
 import {elementos} from './base';
 
 export const dibujaBotonPrimeros = (id0,id1,id2) => {
+    // const hijo = `<div class="row justify-content-center" id="${id0}">
+    //                     <div class="d-grid gap-2 col-3">
+    //                         <button type="button" class="btn btn-secondary ${id1}" id="${id1}">Nueva</button>
+    //                     </div>
+    //                     <div class="d-grid gap-2 col-3">
+    //                         <button type="button" class="btn btn-secondary ${id2}" id="${id2}">Actualizar</button>
+    //                     </div>
+    //                 </div>`;
+
     const hijo = `<div class="container-fluid" id="${id0}">
                     <button type="button" class="btn btn-secondary ${id1}" id="${id1}"><i class="fas fa-plus-square"></i>Nueva</button>
                     <button type="button" class="btn btn-secondary ${id2}" id="${id2}"><i class="fas fa-sync-alt"></i>Actualizar</button>
@@ -82,6 +91,42 @@ export const dibujarTerceraFase = (receta) => {
                     <h2 class="card-text">Total: $520.20</h2>
                 </div>`;
     elementos.padreForRecipe.insertAdjacentHTML('afterbegin',hijo);
+};
+
+export const dibujarActualizar = ()=>{
+    //debemos de tener todas las recetas y mandarlas a dibujar
+    const hijo = `<div id="actualiza-1">
+                    <h4>Receta</h4>
+                    <select name="" id="">
+                        <option value="">Seleccione una receta</option>
+                        <option value="">Receta 1</option>
+                        <option value="">Receta 2</option>
+                        <option value="">Receta 4</option>
+                    </select>
+                    <button class="btn-cargar-datos-ingredientes">Cargar datos</button>
+                </div>`;
+    elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo);
+};
+
+export const dibujarIngredientesActualizar = () => {
+    let numIngrediente = 0;
+    //debemos de dibujar los ingredientes que contenga la receta en cards
+    const hijo = `<div class="container-cards" id="ingrediente-${numIngrediente}">
+                    <div class="card">
+                        <h3 class="card-title">Nombre Ingrediente</h3>
+                        <h4 class="card-text">Cantidad 1kg</h4>
+                        <h4 class="card-text">Costo $150</h4>
+                        <h4 class="card-text">Cantidad a usar:</h4>
+                        <input type="text" name="" id="" placeholder="0.0 gr." class="form-control-secondary">
+                        <h3 class="card-text">Total: $75.00</h3>
+                    </div>
+                </div>`;
+    elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo);
+    //boton para guardar los cambios
+    const hijo2 = `<div>
+                        <button type="button" class="btn btn-secondary btn-guardar-actualizar">Guardar cambios</button>
+                </div>`;
+    elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo2);
 };
 
 export const removerHijo = (contador) => {

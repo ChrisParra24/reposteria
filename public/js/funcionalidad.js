@@ -18,10 +18,31 @@ var elementos = {
   buttonCost: document.getElementById('buttonCost'),
   padreForRecipe: document.getElementById('cuerpo'),
   buttonRecipeNew: document.querySelector('.buttonNuevaRecipe'),
-  buttonRecipeModify: document.getElementById('buttonModificarRecipe'),
+  buttonRecipeModify: document.querySelector('buttonModificarRecipe'),
   buttonAtras: document.querySelector('btn-atras'),
   buttonSiguiente: document.querySelector('btn-siguiente'),
-  buttonCancelar: document.querySelector('btn-cancelar')
+  buttonCancelar: document.querySelector('btn-cancelar'),
+  buttonNewIngredient: document.querySelector('.buttonNewIngredient'),
+  buttonModifyIngredient: document.querySelector('.buttonModifyIngredient')
+};
+
+/***/ }),
+
+/***/ "./resources/js/views/ingredientView.js":
+/*!**********************************************!*\
+  !*** ./resources/js/views/ingredientView.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "dibujarBotones": () => (/* binding */ dibujarBotones)
+/* harmony export */ });
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./resources/js/views/base.js");
+
+var dibujarBotones = function dibujarBotones(id0, id1, id2) {
+  var hijo = "<div class=\"container-fluid\" id=\"".concat(id0, "\">\n                    <button type=\"button\" class=\"btn btn-secondary ").concat(id1, "\" id=\"").concat(id1, "\"><i class=\"fas fa-plus-square\"></i>Nueva</button>\n                    <button type=\"button\" class=\"btn btn-secondary ").concat(id2, "\" id=\"").concat(id2, "\"><i class=\"fas fa-sync-alt\"></i>Actualizar</button>\n                </div>");
+  _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
 };
 
 /***/ }),
@@ -38,11 +59,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "dibujarPrimeraFase": () => (/* binding */ dibujarPrimeraFase),
 /* harmony export */   "dibujarSegundaFase": () => (/* binding */ dibujarSegundaFase),
 /* harmony export */   "dibujarTerceraFase": () => (/* binding */ dibujarTerceraFase),
+/* harmony export */   "dibujarActualizar": () => (/* binding */ dibujarActualizar),
+/* harmony export */   "dibujarIngredientesActualizar": () => (/* binding */ dibujarIngredientesActualizar),
 /* harmony export */   "removerHijo": () => (/* binding */ removerHijo)
 /* harmony export */ });
 /* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./resources/js/views/base.js");
 
 var dibujaBotonPrimeros = function dibujaBotonPrimeros(id0, id1, id2) {
+  // const hijo = `<div class="row justify-content-center" id="${id0}">
+  //                     <div class="d-grid gap-2 col-3">
+  //                         <button type="button" class="btn btn-secondary ${id1}" id="${id1}">Nueva</button>
+  //                     </div>
+  //                     <div class="d-grid gap-2 col-3">
+  //                         <button type="button" class="btn btn-secondary ${id2}" id="${id2}">Actualizar</button>
+  //                     </div>
+  //                 </div>`;
   var hijo = "<div class=\"container-fluid\" id=\"".concat(id0, "\">\n                    <button type=\"button\" class=\"btn btn-secondary ").concat(id1, "\" id=\"").concat(id1, "\"><i class=\"fas fa-plus-square\"></i>Nueva</button>\n                    <button type=\"button\" class=\"btn btn-secondary ").concat(id2, "\" id=\"").concat(id2, "\"><i class=\"fas fa-sync-alt\"></i>Actualizar</button>\n                </div>");
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
 };
@@ -75,6 +106,20 @@ var dibujarTerceraFase = function dibujarTerceraFase(receta) {
   //let numResumen = 0;
   var hijo = "<div class=\"row-form\" id=\"resumen-0\">\n                    <h2>Receta: <span class=\"card-title\">Nombre de la receta</span></h2>\n                </div>\n                <div class=\"row-form\" id=\"resumen-1\">\n                    <h3 class=\"card-text\">Ingredientes:</h3>\n                </div>\n                <div class=\"row-form\" id=\"resumen-2\">\n                        <h5 class=\"card-text\">Nombre inrediente 200gr = $ 00.00</h5>\n                </div>\n                <div class=\"row-form\" id=\"resumen-3\">\n                    <h2 class=\"card-text\">Total: $520.20</h2>\n                </div>";
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
+};
+var dibujarActualizar = function dibujarActualizar() {
+  //debemos de tener todas las recetas y mandarlas a dibujar
+  var hijo = "<div id=\"actualiza-1\">\n                    <h4>Receta</h4>\n                    <select name=\"\" id=\"\">\n                        <option value=\"\">Seleccione una receta</option>\n                        <option value=\"\">Receta 1</option>\n                        <option value=\"\">Receta 2</option>\n                        <option value=\"\">Receta 4</option>\n                    </select>\n                    <button class=\"btn-cargar-datos-ingredientes\">Cargar datos</button>\n                </div>";
+  _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo);
+};
+var dibujarIngredientesActualizar = function dibujarIngredientesActualizar() {
+  var numIngrediente = 0; //debemos de dibujar los ingredientes que contenga la receta en cards
+
+  var hijo = "<div class=\"container-cards\" id=\"ingrediente-".concat(numIngrediente, "\">\n                    <div class=\"card\">\n                        <h3 class=\"card-title\">Nombre Ingrediente</h3>\n                        <h4 class=\"card-text\">Cantidad 1kg</h4>\n                        <h4 class=\"card-text\">Costo $150</h4>\n                        <h4 class=\"card-text\">Cantidad a usar:</h4>\n                        <input type=\"text\" name=\"\" id=\"\" placeholder=\"0.0 gr.\" class=\"form-control-secondary\">\n                        <h3 class=\"card-text\">Total: $75.00</h3>\n                    </div>\n                </div>");
+  _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo); //boton para guardar los cambios
+
+  var hijo2 = "<div>\n                        <button type=\"button\" class=\"btn btn-secondary btn-guardar-actualizar\">Guardar cambios</button>\n                </div>";
+  _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo2);
 };
 var removerHijo = function removerHijo(contador) {
   var numHijos = _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.childElementCount;
@@ -169,12 +214,18 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/base */ "./resources/js/views/base.js");
 /* harmony import */ var _views_recipeView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/recipeView */ "./resources/js/views/recipeView.js");
+/* harmony import */ var _views_ingredientView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/ingredientView */ "./resources/js/views/ingredientView.js");
+
 
 
 var contadorSiguiente = 0; //añadimos botones "Nueva" y "Modificar"
 
 _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.buttonRecipe.addEventListener('click', function () {
   _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujaBotonPrimeros("padreBotonesPrimeros", "buttonNuevaRecipe", "buttonModificarRecipe");
+});
+_views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.buttonIngedient.addEventListener('click', function () {
+  //añadimos los botones "nueva y modificar"
+  _views_ingredientView__WEBPACK_IMPORTED_MODULE_2__.dibujarBotones('padreBotones', 'buttonNewIngredient', 'buttonModifyIngredient');
 }); //delegacion de eventos
 
 _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListener('click', function (e) {
@@ -212,6 +263,33 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListen
       _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(contadorSiguiente);
       contadorSiguiente = 0;
     }
+  }
+
+  if (e.target.matches('.buttonModificarRecipe')) {
+    //borrar los botones que hay
+    _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(); //dibujamos la vista de actualizar
+
+    _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarActualizar();
+  }
+
+  if (e.target.matches('.btn-cargar-datos-ingredientes')) {
+    //agregar a la vista los ingredientes para poder actualizarlos
+    //pueden ser igual en cards para reutilizar código
+    _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarIngredientesActualizar();
+  }
+
+  if (e.target.matches('.btn-guardar-actualizar')) {//guardamos los cambios hechos en los ingredientes
+    //mandamos mensaje de exito al usuario
+    //quitamos los elementos de la vista
+    //recipeView.removerHijo();
+  }
+
+  if (e.target.matches('.buttonNewIngredient')) {
+    console.log('Hola mundo - nuevo ingrediente');
+  }
+
+  if (e.target.matches('.buttonModifyIngredient')) {
+    console.log('Hola mundo - modificacion ingrediente');
   }
 });
 })();
