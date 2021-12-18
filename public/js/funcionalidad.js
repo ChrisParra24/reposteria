@@ -21,7 +21,28 @@ var elementos = {
   buttonRecipeModify: document.querySelector('buttonModificarRecipe'),
   buttonAtras: document.querySelector('btn-atras'),
   buttonSiguiente: document.querySelector('btn-siguiente'),
-  buttonCancelar: document.querySelector('btn-cancelar')
+  buttonCancelar: document.querySelector('btn-cancelar'),
+  buttonNewIngredient: document.querySelector('.buttonNewIngredient'),
+  buttonModifyIngredient: document.querySelector('.buttonModifyIngredient')
+};
+
+/***/ }),
+
+/***/ "./resources/js/views/ingredientView.js":
+/*!**********************************************!*\
+  !*** ./resources/js/views/ingredientView.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "dibujarBotones": () => (/* binding */ dibujarBotones)
+/* harmony export */ });
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./resources/js/views/base.js");
+
+var dibujarBotones = function dibujarBotones(id0, id1, id2) {
+  var hijo = "<div class=\"container-fluid\" id=\"".concat(id0, "\">\n                    <button type=\"button\" class=\"btn btn-secondary ").concat(id1, "\" id=\"").concat(id1, "\"><i class=\"fas fa-plus-square\"></i>Nueva</button>\n                    <button type=\"button\" class=\"btn btn-secondary ").concat(id2, "\" id=\"").concat(id2, "\"><i class=\"fas fa-sync-alt\"></i>Actualizar</button>\n                </div>");
+  _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
 };
 
 /***/ }),
@@ -193,12 +214,18 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/base */ "./resources/js/views/base.js");
 /* harmony import */ var _views_recipeView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/recipeView */ "./resources/js/views/recipeView.js");
+/* harmony import */ var _views_ingredientView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/ingredientView */ "./resources/js/views/ingredientView.js");
+
 
 
 var contadorSiguiente = 0; //añadimos botones "Nueva" y "Modificar"
 
 _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.buttonRecipe.addEventListener('click', function () {
   _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujaBotonPrimeros("padreBotonesPrimeros", "buttonNuevaRecipe", "buttonModificarRecipe");
+});
+_views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.buttonIngedient.addEventListener('click', function () {
+  //añadimos los botones "nueva y modificar"
+  _views_ingredientView__WEBPACK_IMPORTED_MODULE_2__.dibujarBotones('padreBotones', 'buttonNewIngredient', 'buttonModifyIngredient');
 }); //delegacion de eventos
 
 _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListener('click', function (e) {
@@ -251,10 +278,18 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListen
     _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarIngredientesActualizar();
   }
 
-  if (e.target.mathces('.btn-guardar-actualizar')) {//guardamos los cambios hechos en los ingredientes
+  if (e.target.matches('.btn-guardar-actualizar')) {//guardamos los cambios hechos en los ingredientes
     //mandamos mensaje de exito al usuario
     //quitamos los elementos de la vista
     //recipeView.removerHijo();
+  }
+
+  if (e.target.matches('.buttonNewIngredient')) {
+    console.log('Hola mundo - nuevo ingrediente');
+  }
+
+  if (e.target.matches('.buttonModifyIngredient')) {
+    console.log('Hola mundo - modificacion ingrediente');
   }
 });
 })();

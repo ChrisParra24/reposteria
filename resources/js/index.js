@@ -1,10 +1,16 @@
 import { elementos } from "./views/base";
 import * as recipeView from "./views/recipeView";
+import * as ingredientView from "./views/ingredientView";
 
 let contadorSiguiente = 0;
 //añadimos botones "Nueva" y "Modificar"
 elementos.buttonRecipe.addEventListener('click', ()=>{
     recipeView.dibujaBotonPrimeros("padreBotonesPrimeros","buttonNuevaRecipe", "buttonModificarRecipe");
+});
+
+elementos.buttonIngedient.addEventListener('click', ()=>{
+    //añadimos los botones "nueva y modificar"
+    ingredientView.dibujarBotones('padreBotones','buttonNewIngredient','buttonModifyIngredient');
 });
 
 
@@ -63,11 +69,18 @@ elementos.padreForRecipe.addEventListener('click', (e)=>{
         //pueden ser igual en cards para reutilizar código
         recipeView.dibujarIngredientesActualizar();
     }
-    if(e.target.mathces('.btn-guardar-actualizar')){
+    if(e.target.matches('.btn-guardar-actualizar')){
         //guardamos los cambios hechos en los ingredientes
         //mandamos mensaje de exito al usuario
         //quitamos los elementos de la vista
         //recipeView.removerHijo();
+    }
+
+    if(e.target.matches('.buttonNewIngredient')){
+
+    }
+    if(e.target.matches('.buttonModifyIngredient')){
+
     }
 
 });

@@ -7,5 +7,7 @@ export const elementos = {
     buttonRecipeModify : document.querySelector('buttonModificarRecipe'),
     buttonAtras : document.querySelector('btn-atras'),
     buttonSiguiente : document.querySelector('btn-siguiente'),
-    buttonCancelar : document.querySelector('btn-cancelar')
+    buttonCancelar : document.querySelector('btn-cancelar'),
+    buttonNewIngredient : document.querySelector('.buttonNewIngredient'),
+    buttonModifyIngredient: document.querySelector('.buttonModifyIngredient')
 };
