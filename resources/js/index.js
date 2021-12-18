@@ -60,6 +60,14 @@ elementos.padreForRecipe.addEventListener('click', (e)=>{
     }
     if(e.target.matches('.btn-cargar-datos-ingredientes')){
         //agregar a la vista los ingredientes para poder actualizarlos
+        //pueden ser igual en cards para reutilizar código
+        recipeView.dibujarIngredientesActualizar();
+    }
+    if(e.target.mathces('.btn-guardar-actualizar')){
+        //guardamos los cambios hechos en los ingredientes
+        //mandamos mensaje de exito al usuario
+        //quitamos los elementos de la vista
+        //recipeView.removerHijo();
     }
 
 });

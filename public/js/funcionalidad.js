@@ -39,6 +39,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "dibujarSegundaFase": () => (/* binding */ dibujarSegundaFase),
 /* harmony export */   "dibujarTerceraFase": () => (/* binding */ dibujarTerceraFase),
 /* harmony export */   "dibujarActualizar": () => (/* binding */ dibujarActualizar),
+/* harmony export */   "dibujarIngredientesActualizar": () => (/* binding */ dibujarIngredientesActualizar),
 /* harmony export */   "removerHijo": () => (/* binding */ removerHijo)
 /* harmony export */ });
 /* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./resources/js/views/base.js");
@@ -89,6 +90,15 @@ var dibujarActualizar = function dibujarActualizar() {
   //debemos de tener todas las recetas y mandarlas a dibujar
   var hijo = "<div id=\"actualiza-1\">\n                    <h4>Receta</h4>\n                    <select name=\"\" id=\"\">\n                        <option value=\"\">Seleccione una receta</option>\n                        <option value=\"\">Receta 1</option>\n                        <option value=\"\">Receta 2</option>\n                        <option value=\"\">Receta 4</option>\n                    </select>\n                    <button class=\"btn-cargar-datos-ingredientes\">Cargar datos</button>\n                </div>";
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo);
+};
+var dibujarIngredientesActualizar = function dibujarIngredientesActualizar() {
+  var numIngrediente = 0; //debemos de dibujar los ingredientes que contenga la receta en cards
+
+  var hijo = "<div class=\"container-cards\" id=\"ingrediente-".concat(numIngrediente, "\">\n                    <div class=\"card\">\n                        <h3 class=\"card-title\">Nombre Ingrediente</h3>\n                        <h4 class=\"card-text\">Cantidad 1kg</h4>\n                        <h4 class=\"card-text\">Costo $150</h4>\n                        <h4 class=\"card-text\">Cantidad a usar:</h4>\n                        <input type=\"text\" name=\"\" id=\"\" placeholder=\"0.0 gr.\" class=\"form-control-secondary\">\n                        <h3 class=\"card-text\">Total: $75.00</h3>\n                    </div>\n                </div>");
+  _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo); //boton para guardar los cambios
+
+  var hijo2 = "<div>\n                        <button type=\"button\" class=\"btn btn-secondary btn-guardar-actualizar\">Guardar cambios</button>\n                </div>";
+  _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo2);
 };
 var removerHijo = function removerHijo(contador) {
   var numHijos = _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.childElementCount;
@@ -235,7 +245,16 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListen
     _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarActualizar();
   }
 
-  if (e.target.matches('.btn-cargar-datos-ingredientes')) {//agregar a la vista los ingredientes para poder actualizarlos
+  if (e.target.matches('.btn-cargar-datos-ingredientes')) {
+    //agregar a la vista los ingredientes para poder actualizarlos
+    //pueden ser igual en cards para reutilizar código
+    _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarIngredientesActualizar();
+  }
+
+  if (e.target.mathces('.btn-guardar-actualizar')) {//guardamos los cambios hechos en los ingredientes
+    //mandamos mensaje de exito al usuario
+    //quitamos los elementos de la vista
+    //recipeView.removerHijo();
   }
 });
 })();

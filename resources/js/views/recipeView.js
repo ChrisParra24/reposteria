@@ -108,6 +108,27 @@ export const dibujarActualizar = ()=>{
     elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo);
 };
 
+export const dibujarIngredientesActualizar = () => {
+    let numIngrediente = 0;
+    //debemos de dibujar los ingredientes que contenga la receta en cards
+    const hijo = `<div class="container-cards" id="ingrediente-${numIngrediente}">
+                    <div class="card">
+                        <h3 class="card-title">Nombre Ingrediente</h3>
+                        <h4 class="card-text">Cantidad 1kg</h4>
+                        <h4 class="card-text">Costo $150</h4>
+                        <h4 class="card-text">Cantidad a usar:</h4>
+                        <input type="text" name="" id="" placeholder="0.0 gr." class="form-control-secondary">
+                        <h3 class="card-text">Total: $75.00</h3>
+                    </div>
+                </div>`;
+    elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo);
+    //boton para guardar los cambios
+    const hijo2 = `<div>
+                        <button type="button" class="btn btn-secondary btn-guardar-actualizar">Guardar cambios</button>
+                </div>`;
+    elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo2);
+};
+
 export const removerHijo = (contador) => {
     const numHijos = elementos.padreForRecipe.childElementCount;
     const padre = elementos.padreForRecipe;
