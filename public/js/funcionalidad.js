@@ -10,7 +10,8 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "elementos": () => (/* binding */ elementos)
+/* harmony export */   "elementos": () => (/* binding */ elementos),
+/* harmony export */   "eliminarHijo": () => (/* binding */ eliminarHijo)
 /* harmony export */ });
 var elementos = {
   buttonRecipe: document.getElementById('buttonRecipe'),
@@ -23,7 +24,38 @@ var elementos = {
   buttonSiguiente: document.querySelector('btn-siguiente'),
   buttonCancelar: document.querySelector('btn-cancelar'),
   buttonNewIngredient: document.querySelector('.buttonNewIngredient'),
-  buttonModifyIngredient: document.querySelector('.buttonModifyIngredient')
+  buttonModifyIngredient: document.querySelector('.buttonModifyIngredient'),
+  buttonSalirForm: document.querySelector('.btn-salir-formulario'),
+  buttonSalirModifyIngre: document.querySelector('.btn-salir-modify'),
+  buttonCargaDatosIng: document.querySelector('.btn-carga-ingre-datos')
+};
+var eliminarHijo = function eliminarHijo(cadena) {
+  var padre = elementos.padreForRecipe;
+  var numHijos = padre.childElementCount;
+
+  if (numHijos === 1) {
+    padre.removeChild(padre.childNodes[0]);
+  } else {
+    if (cadena === 'hijo') {
+      eliminaHijos(padre, cadena, numHijos - 1);
+    } else if (cadena === 'ingrediente') {
+      eliminaHijos(padre, cadena, numHijos - 1);
+    } else if (cadena === 'resumen') {
+      eliminaHijos(padre, cadena, numHijos - 1);
+
+      if (padre.hasChildNodes) {
+        var hijo = document.getElementById('hijo-botones');
+        padre.removeChild(hijo);
+      }
+    }
+  }
+};
+
+var eliminaHijos = function eliminaHijos(padre, cadena, limite) {
+  for (var i = 0; i < limite; i++) {
+    var hijo = document.getElementById("".concat(cadena, "-").concat(i));
+    padre.removeChild(hijo);
+  }
 };
 
 /***/ }),
@@ -36,12 +68,22 @@ var elementos = {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "dibujarBotones": () => (/* binding */ dibujarBotones)
+/* harmony export */   "dibujarBotones": () => (/* binding */ dibujarBotones),
+/* harmony export */   "formularioNew": () => (/* binding */ formularioNew),
+/* harmony export */   "modifyIngredient": () => (/* binding */ modifyIngredient)
 /* harmony export */ });
 /* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./resources/js/views/base.js");
 
 var dibujarBotones = function dibujarBotones(id0, id1, id2) {
   var hijo = "<div class=\"container-fluid\" id=\"".concat(id0, "\">\n                    <button type=\"button\" class=\"btn btn-secondary ").concat(id1, "\" id=\"").concat(id1, "\"><i class=\"fas fa-plus-square\"></i>Nueva</button>\n                    <button type=\"button\" class=\"btn btn-secondary ").concat(id2, "\" id=\"").concat(id2, "\"><i class=\"fas fa-sync-alt\"></i>Actualizar</button>\n                </div>");
+  _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
+};
+var formularioNew = function formularioNew() {
+  var hijo = "<div id=\"hijo-0\">\n                    <h3>Datos del ingrediente</h3>\n                    <form action=\"\">\n                        <label for=\"\">Nombre</label>\n                        <input type=\"text\" name=\"\" id=\"\">\n                        <label for=\"\">Precio</label>\n                        <input type=\"number\" name=\"\" id=\"\" placeholder=\"00.00\">\n                        <label for=\"\">Cantidad</label>\n                        <input type=\"number\" name=\"\" id=\"\" placeholder=\"0.000\">\n                        <select name=\"\" id=\"\">\n                            <option value=\"\">kg</option>\n                            <option value=\"\">lt</option>\n                            <option value=\"\">pza</option>\n                        </select>\n                        <input type=\"submit\" value=\"Agregar\">\n                    </form>\n                    <button type=\"button\" class=\"btn-salir-formulario\">Salir</button>\n                </div>";
+  _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
+};
+var modifyIngredient = function modifyIngredient() {
+  var hijo = "<div id=\"resumen-0\">\n                    <h4>Ingrediente</h4>\n                    <select name=\"\" id=\"\">\n                        <option value=\"\">Ingrediente 1</option>\n                        <option value=\"\">Ingrediente 2</option>\n                        <option value=\"\">Ingrediente 3</option>\n                    </select>\n                    <button type=\"button\" class=\"btn-carga-ingre-datos\">Cargar datos</button>\n                </div>\n                <div id=\"resumen-1\">\n                    <div>\n                        <h4>Datos actuales</h4>\n                        <label for=\"\">Precio</label>\n                        <input type=\"number\" name=\"\" id=\"\" disabled=\"true\">\n                        <label for=\"\">Cantidad</label>\n                        <input type=\"number\" name=\"\" id=\"\" disabled=\"true\">\n                        <label for=\"\">Unidad</label>\n                        <input type=\"number\" name=\"\" id=\"\" disabled=\"true\">\n                    </div>\n                    <div>\n                        <h4>Datos nuevos</h4>\n                        <label for=\"\">Precio</label>\n                        <input type=\"number\" name=\"\" id=\"\" placeholder=\"00.00\">\n                        <label for=\"\">Cantidad</label>\n                        <input type=\"number\" name=\"\" id=\"\" placeholder=\"0.000\">\n                        <button type=\"button\">Actualizar</button>\n                        <button type=\"button\">Cancelar</button>\n                    </div>\n                </div>\n                <div id=\"hijo-botones\">\n                    <button type=\"button\" class=\"btn-salir-modify\">Salir</button>\n                </div>";
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
 };
 
@@ -60,8 +102,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "dibujarSegundaFase": () => (/* binding */ dibujarSegundaFase),
 /* harmony export */   "dibujarTerceraFase": () => (/* binding */ dibujarTerceraFase),
 /* harmony export */   "dibujarActualizar": () => (/* binding */ dibujarActualizar),
-/* harmony export */   "dibujarIngredientesActualizar": () => (/* binding */ dibujarIngredientesActualizar),
-/* harmony export */   "removerHijo": () => (/* binding */ removerHijo)
+/* harmony export */   "dibujarIngredientesActualizar": () => (/* binding */ dibujarIngredientesActualizar)
 /* harmony export */ });
 /* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./resources/js/views/base.js");
 
@@ -92,7 +133,7 @@ var dibujarPrimeraFase = function dibujarPrimeraFase() {
   var hijo3 = "<div class=\"row-form\" id=\"hijo-".concat(numHijo, "\">\n                        <div class=\"form-group\">\n                            <label for=\"\">Nombre de ingrediente 2</label>\n                            <input type=\"checkbox\" name=\"\" id=\"\">\n                        </div>\n                    </div>");
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo3);
   numHijo++;
-  var hijo4 = "<div class=\"row-buttons\" id=\"hijo-".concat(numHijo, "\">\n                        <button class=\"btn btn-secondary\"><i class=\"fas fa-arrow-left\"></i>Atr\xE1s</button>\n                        <button class=\"btn btn-primary\" id=\"btn_next\"><i class=\"fas fa-arrow-right\"></i>Siguiente</button>\n                        <button class=\"btn btn-secondary\"><i class=\"fas fa-window-close\"></i>Cancelar</button>\n                    </div>");
+  var hijo4 = "<div class=\"row-buttons\" id=\"hijo-botones\">\n                        <button class=\"btn btn-secondary\"><i class=\"fas fa-arrow-left\"></i>Atr\xE1s</button>\n                        <button class=\"btn btn-primary\" id=\"btn_next\"><i class=\"fas fa-arrow-right\"></i>Siguiente</button>\n                        <button class=\"btn btn-secondary\"><i class=\"fas fa-window-close\"></i>Cancelar</button>\n                    </div>";
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo4);
 };
 var dibujarSegundaFase = function dibujarSegundaFase(ingredientes) {
@@ -120,32 +161,29 @@ var dibujarIngredientesActualizar = function dibujarIngredientesActualizar() {
 
   var hijo2 = "<div>\n                        <button type=\"button\" class=\"btn btn-secondary btn-guardar-actualizar\">Guardar cambios</button>\n                </div>";
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo2);
-};
-var removerHijo = function removerHijo(contador) {
-  var numHijos = _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.childElementCount;
-  var padre = _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe;
-
-  if (numHijos === 1) {
-    padre.removeChild(padre.childNodes[0]);
-  } else {
-    if (contador === 0) {
-      eliminaHijos(padre, 'hijo', numHijos - 1);
-    } else if (contador === 1) {
-      eliminaHijos(padre, 'ingrediente', numHijos - 1);
-    } else if (contador === 2) {
-      eliminaHijos(padre, 'resumen', numHijos - 1);
-      var hijo = document.getElementById('hijo-receta-botones');
-      padre.removeChild(hijo);
-    }
-  }
-};
-
-var eliminaHijos = function eliminaHijos(padre, cadena, limite) {
-  for (var i = 0; i < limite; i++) {
-    var hijo = document.getElementById("".concat(cadena, "-").concat(i));
-    padre.removeChild(hijo);
-  }
-};
+}; // export const removerHijo = (contador) => {
+//     const numHijos = elementos.padreForRecipe.childElementCount;
+//     const padre = elementos.padreForRecipe;
+//     if(numHijos === 1){
+//         padre.removeChild(padre.childNodes[0]);
+//     }else{
+//         if(contador === 0 ){
+//             eliminaHijos(padre,'hijo',numHijos-1);
+//         }else if(contador === 1){
+//             eliminaHijos(padre,'ingrediente',numHijos-1);
+//         }else if(contador === 2){
+//             eliminaHijos(padre,'resumen',numHijos-1);
+//             const hijo = document.getElementById('hijo-receta-botones');
+//             padre.removeChild(hijo);
+//         }
+//     }
+// };
+// const eliminaHijos = (padre,cadena,limite) => {
+//     for(let i=0;i<limite;i++){
+//         let hijo = document.getElementById(`${cadena}-${i}`);
+//         padre.removeChild(hijo);
+//     }
+// }
 
 /***/ })
 
@@ -230,7 +268,7 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.buttonIngedient.addEventListe
 
 _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListener('click', function (e) {
   if (e.target.matches('.buttonNuevaRecipe')) {
-    _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(contadorSiguiente);
+    (0,_views_base__WEBPACK_IMPORTED_MODULE_0__.eliminarHijo)('receta');
     _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarPrimeraFase();
   } // <<<<<<< HEAD
 
@@ -245,14 +283,14 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListen
       // >>>>>>> main
       //guardamos los checbox seleccionados
       //borramos lo que hay en la vista, excepto los botones "atras" "siguiente" "cancelar"
-      _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(contadorSiguiente); //dibujamos la siguiente parte pasando contador y los ingredientes seleccionados
+      (0,_views_base__WEBPACK_IMPORTED_MODULE_0__.eliminarHijo)('hijo'); //dibujamos la siguiente parte pasando contador y los ingredientes seleccionados
 
       _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarSegundaFase();
       contadorSiguiente++;
     } else if (contadorSiguiente === 1) {
       //debemos de guardar lo que hay de la cantidad de las cards en nuestro objeto
       //removemos lo que hay de hijos (las cards)
-      _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(contadorSiguiente); //dibujamos la ultima fase de nuestras recetas
+      (0,_views_base__WEBPACK_IMPORTED_MODULE_0__.eliminarHijo)('ingrediente'); //dibujamos la ultima fase de nuestras recetas
 
       _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarTerceraFase();
       contadorSiguiente++;
@@ -260,15 +298,14 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListen
       //se guarda la informacion en la bd
       //mandamos alerta de que se realizo el guardado de manera correcta
       //borramos todos los elementos y reiniciamos el contador
-      _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(contadorSiguiente);
+      (0,_views_base__WEBPACK_IMPORTED_MODULE_0__.eliminarHijo)('resumen');
       contadorSiguiente = 0;
     }
   }
 
   if (e.target.matches('.buttonModificarRecipe')) {
     //borrar los botones que hay
-    _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.removerHijo(); //dibujamos la vista de actualizar
-
+    //dibujamos la vista de actualizar
     _views_recipeView__WEBPACK_IMPORTED_MODULE_1__.dibujarActualizar();
   }
 
@@ -282,14 +319,31 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListen
     //mandamos mensaje de exito al usuario
     //quitamos los elementos de la vista
     //recipeView.removerHijo();
-  }
+  } //***************************************** Ingredientes */
+
 
   if (e.target.matches('.buttonNewIngredient')) {
-    console.log('Hola mundo - nuevo ingrediente');
+    //borramos los botones "nueva" y "actualizar"
+    (0,_views_base__WEBPACK_IMPORTED_MODULE_0__.eliminarHijo)('ingrediente'); //dibujamos el formulario para agregar nuestro ingrediente
+
+    _views_ingredientView__WEBPACK_IMPORTED_MODULE_2__.formularioNew();
+  }
+
+  if (e.target.matches('.btn-salir-formulario')) {
+    //borramos el formulario de alta de ingredientes
+    (0,_views_base__WEBPACK_IMPORTED_MODULE_0__.eliminarHijo)('ingrediente');
   }
 
   if (e.target.matches('.buttonModifyIngredient')) {
-    console.log('Hola mundo - modificacion ingrediente');
+    //borramos los botones "nueva" y "actualizar"
+    (0,_views_base__WEBPACK_IMPORTED_MODULE_0__.eliminarHijo)('ingrediente'); //dibujamos la parte de modificar nuestro ingrediente
+
+    _views_ingredientView__WEBPACK_IMPORTED_MODULE_2__.modifyIngredient();
+  }
+
+  if (e.target.matches('.btn-salir-modify')) {
+    //borramos todo
+    (0,_views_base__WEBPACK_IMPORTED_MODULE_0__.eliminarHijo)('resumen');
   }
 });
 })();

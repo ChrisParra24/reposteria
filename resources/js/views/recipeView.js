@@ -51,7 +51,7 @@ export const dibujarPrimeraFase = () => {
     elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo3);
     numHijo++;
 
-    const hijo4 = `<div class="row-buttons" id="hijo-${numHijo}">
+    const hijo4 = `<div class="row-buttons" id="hijo-botones">
                         <button class="btn btn-secondary"><i class="fas fa-arrow-left"></i>Atrás</button>
                         <button class="btn btn-primary" id="btn_next"><i class="fas fa-arrow-right"></i>Siguiente</button>
                         <button class="btn btn-secondary"><i class="fas fa-window-close"></i>Cancelar</button>
@@ -129,28 +129,28 @@ export const dibujarIngredientesActualizar = () => {
     elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo2);
 };
 
-export const removerHijo = (contador) => {
-    const numHijos = elementos.padreForRecipe.childElementCount;
-    const padre = elementos.padreForRecipe;
-    if(numHijos === 1){
-        padre.removeChild(padre.childNodes[0]);
-    }else{
-        if(contador === 0 ){
-            eliminaHijos(padre,'hijo',numHijos-1);
-        }else if(contador === 1){
-            eliminaHijos(padre,'ingrediente',numHijos-1);
-        }else if(contador === 2){
-            eliminaHijos(padre,'resumen',numHijos-1);
-            const hijo = document.getElementById('hijo-receta-botones');
-            padre.removeChild(hijo);
-        }
-    }
-};
+// export const removerHijo = (contador) => {
+//     const numHijos = elementos.padreForRecipe.childElementCount;
+//     const padre = elementos.padreForRecipe;
+//     if(numHijos === 1){
+//         padre.removeChild(padre.childNodes[0]);
+//     }else{
+//         if(contador === 0 ){
+//             eliminaHijos(padre,'hijo',numHijos-1);
+//         }else if(contador === 1){
+//             eliminaHijos(padre,'ingrediente',numHijos-1);
+//         }else if(contador === 2){
+//             eliminaHijos(padre,'resumen',numHijos-1);
+//             const hijo = document.getElementById('hijo-receta-botones');
+//             padre.removeChild(hijo);
+//         }
+//     }
+// };
 
 
-const eliminaHijos = (padre,cadena,limite) => {
-    for(let i=0;i<limite;i++){
-        let hijo = document.getElementById(`${cadena}-${i}`);
-        padre.removeChild(hijo);
-    }
-}
+// const eliminaHijos = (padre,cadena,limite) => {
+//     for(let i=0;i<limite;i++){
+//         let hijo = document.getElementById(`${cadena}-${i}`);
+//         padre.removeChild(hijo);
+//     }
+// }

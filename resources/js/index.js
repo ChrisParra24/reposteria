@@ -1,4 +1,4 @@
-import { elementos } from "./views/base";
+import { elementos , eliminarHijo} from "./views/base";
 import * as recipeView from "./views/recipeView";
 import * as ingredientView from "./views/ingredientView";
 
@@ -18,7 +18,7 @@ elementos.buttonIngedient.addEventListener('click', ()=>{
 elementos.padreForRecipe.addEventListener('click', (e)=>{
 
     if(e.target.matches('.buttonNuevaRecipe')){
-        recipeView.removerHijo(contadorSiguiente);
+        eliminarHijo('receta');
         recipeView.dibujarPrimeraFase();
     }
 // <<<<<<< HEAD
@@ -34,7 +34,7 @@ elementos.padreForRecipe.addEventListener('click', (e)=>{
             //guardamos los checbox seleccionados
 
             //borramos lo que hay en la vista, excepto los botones "atras" "siguiente" "cancelar"
-            recipeView.removerHijo(contadorSiguiente);
+            eliminarHijo('hijo');
             //dibujamos la siguiente parte pasando contador y los ingredientes seleccionados
             recipeView.dibujarSegundaFase();
             contadorSiguiente++;
@@ -43,7 +43,7 @@ elementos.padreForRecipe.addEventListener('click', (e)=>{
             //debemos de guardar lo que hay de la cantidad de las cards en nuestro objeto
 
             //removemos lo que hay de hijos (las cards)
-            recipeView.removerHijo(contadorSiguiente);
+            eliminarHijo('ingrediente');
             //dibujamos la ultima fase de nuestras recetas
             recipeView.dibujarTerceraFase();
             contadorSiguiente++;
@@ -54,13 +54,13 @@ elementos.padreForRecipe.addEventListener('click', (e)=>{
             //mandamos alerta de que se realizo el guardado de manera correcta
 
             //borramos todos los elementos y reiniciamos el contador
-            recipeView.removerHijo(contadorSiguiente);
+            eliminarHijo('resumen');
             contadorSiguiente = 0;
         }
     }
     if(e.target.matches('.buttonModificarRecipe')){
         //borrar los botones que hay
-        recipeView.removerHijo();
+
         //dibujamos la vista de actualizar
         recipeView.dibujarActualizar();
     }
@@ -75,12 +75,29 @@ elementos.padreForRecipe.addEventListener('click', (e)=>{
         //quitamos los elementos de la vista
         //recipeView.removerHijo();
     }
-
+    //***************************************** Ingredientes */
     if(e.target.matches('.buttonNewIngredient')){
+        //borramos los botones "nueva" y "actualizar"
+        eliminarHijo('ingrediente');
+        //dibujamos el formulario para agregar nuestro ingrediente
+        ingredientView.formularioNew();
 
     }
-    if(e.target.matches('.buttonModifyIngredient')){
 
+    if(e.target.matches('.btn-salir-formulario')){
+        //borramos el formulario de alta de ingredientes
+        eliminarHijo('ingrediente');
+    }
+
+    if(e.target.matches('.buttonModifyIngredient')){
+        //borramos los botones "nueva" y "actualizar"
+        eliminarHijo('ingrediente');
+        //dibujamos la parte de modificar nuestro ingrediente
+        ingredientView.modifyIngredient();
+    }
+    if(e.target.matches('.btn-salir-modify')){
+        //borramos todo
+        eliminarHijo('resumen');
     }
 
 });
