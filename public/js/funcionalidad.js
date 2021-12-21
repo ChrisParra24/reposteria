@@ -27,7 +27,8 @@ var elementos = {
   buttonModifyIngredient: document.querySelector('.buttonModifyIngredient'),
   buttonSalirForm: document.querySelector('.btn-salir-formulario'),
   buttonSalirModifyIngre: document.querySelector('.btn-salir-modify'),
-  buttonCargaDatosIng: document.querySelector('.btn-carga-ingre-datos')
+  buttonCargaDatosIng: document.querySelector('.btn-carga-ingre-datos'),
+  buttonCargaDatosCotizacion: document.querySelector('.btn-carga-cotizacion')
 };
 var eliminarHijo = function eliminarHijo(cadena) {
   var padre = elementos.padreForRecipe;
@@ -85,6 +86,37 @@ var formularioNew = function formularioNew() {
 var modifyIngredient = function modifyIngredient() {
   var hijo = "<div id=\"resumen-0\">\n                    <h4>Ingrediente</h4>\n                    <select name=\"\" id=\"\">\n                        <option value=\"\">Ingrediente 1</option>\n                        <option value=\"\">Ingrediente 2</option>\n                        <option value=\"\">Ingrediente 3</option>\n                    </select>\n                    <button type=\"button\" class=\"btn-carga-ingre-datos\">Cargar datos</button>\n                </div>\n                <div id=\"resumen-1\">\n                    <div>\n                        <h4>Datos actuales</h4>\n                        <label for=\"\">Precio</label>\n                        <input type=\"number\" name=\"\" id=\"\" disabled=\"true\">\n                        <label for=\"\">Cantidad</label>\n                        <input type=\"number\" name=\"\" id=\"\" disabled=\"true\">\n                        <label for=\"\">Unidad</label>\n                        <input type=\"number\" name=\"\" id=\"\" disabled=\"true\">\n                    </div>\n                    <div>\n                        <h4>Datos nuevos</h4>\n                        <label for=\"\">Precio</label>\n                        <input type=\"number\" name=\"\" id=\"\" placeholder=\"00.00\">\n                        <label for=\"\">Cantidad</label>\n                        <input type=\"number\" name=\"\" id=\"\" placeholder=\"0.000\">\n                        <button type=\"button\">Actualizar</button>\n                        <button type=\"button\">Cancelar</button>\n                    </div>\n                </div>\n                <div id=\"hijo-botones\">\n                    <button type=\"button\" class=\"btn-salir-modify\">Salir</button>\n                </div>";
   _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
+};
+
+/***/ }),
+
+/***/ "./resources/js/views/quotationView.js":
+/*!*********************************************!*\
+  !*** ./resources/js/views/quotationView.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "primerParte": () => (/* binding */ primerParte),
+/* harmony export */   "segundaParte": () => (/* binding */ segundaParte),
+/* harmony export */   "eliminarListaIngredientes": () => (/* binding */ eliminarListaIngredientes)
+/* harmony export */ });
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./resources/js/views/base.js");
+
+var primerParte = function primerParte() {
+  //los option deben ser con un ciclo
+  var hijo = "<div id=\"resumen-0\">\n                    <label for=\"\">Nombre</label>\n                    <select name=\"\" id=\"\">\n                        <option value=\"\">Receta 1</option>\n                        <option value=\"\">Receta 2</option>\n                        <option value=\"\">Receta 3</option>\n                    </select>\n                    <button type=\"button\" class=\"btn-carga-cotizacion\">Cargar datos</button>\n                </div>";
+  _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('afterbegin', hijo);
+};
+var segundaParte = function segundaParte() {
+  var hijo = "<div id=\"resumen-1\">\n                    <div id=\"lista-ingredients\">\n                        <div id=\"cabecera-cotizacion\">\n                            <h1>Datos de ingredientes</h1>\n                            <h1>Cantidad</h1>\n                            <h1>Precio</h1>\n                        </div>\n                        <ul>\n                            <li>\n                                <h4>NombreIngrediente</h4>\n                                <h4>00.00</h4>\n                                <h4>(kg,lt,pza)</h4>\n                                <input type=\"number\" name=\"\" id=\"\" placeholder=\"0.000\">\n                                <input type=\"number\" name=\"\" id=\"\" placeholder=\"00.00\" disabled=\"true\">\n                            </li>\n                        </ul>\n                    </div>\n                    <div id=\"total-cotizacion\">\n                        <h2>TOTAL</h2>\n                        <input type=\"text\" disabled=\"true\">\n                    </div>\n                    <div id=\"costo-total\">\n                        <div id=\"cantidades-extra\">\n                            <h3>Porcentaje1 (%)</h3>\n                            <h4>cantidadPorcentaje</h4>\n                            <h3>Otra cantidad</h3>\n                            <h4>cantidad</h4>\n                        </div>\n                        <div id=\"precio-calculado\">\n                            <h2>COSTO TOTAL</h2>\n                            <input type=\"text\" placeholder=\"$ 00.00\" disabled=\"true\">\n                        </div>\n                    </div>\n                </div>\n                <div id=\"hijo-botones\">\n                    <button type=\"button\" class=\"btn-salir-cotizacion\">Salir</button>\n                    <button type=\"button\" class=\"btn-reset-datos\">Borrar datos</button>\n                </div>";
+  _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.insertAdjacentHTML('beforeend', hijo);
+};
+var eliminarListaIngredientes = function eliminarListaIngredientes() {
+  var padre = _base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe;
+  var hijo = document.getElementById('resumen-1');
+  padre.removeChild(hijo);
 };
 
 /***/ }),
@@ -253,6 +285,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/base */ "./resources/js/views/base.js");
 /* harmony import */ var _views_recipeView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/recipeView */ "./resources/js/views/recipeView.js");
 /* harmony import */ var _views_ingredientView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/ingredientView */ "./resources/js/views/ingredientView.js");
+/* harmony import */ var _views_quotationView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/quotationView */ "./resources/js/views/quotationView.js");
+
 
 
 
@@ -264,6 +298,10 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.buttonRecipe.addEventListener
 _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.buttonIngedient.addEventListener('click', function () {
   //añadimos los botones "nueva y modificar"
   _views_ingredientView__WEBPACK_IMPORTED_MODULE_2__.dibujarBotones('padreBotones', 'buttonNewIngredient', 'buttonModifyIngredient');
+});
+_views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.buttonCost.addEventListener('click', function () {
+  //añadimos la primer parte para la cotizacion
+  _views_quotationView__WEBPACK_IMPORTED_MODULE_3__.primerParte();
 }); //delegacion de eventos
 
 _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListener('click', function (e) {
@@ -342,6 +380,23 @@ _views_base__WEBPACK_IMPORTED_MODULE_0__.elementos.padreForRecipe.addEventListen
   }
 
   if (e.target.matches('.btn-salir-modify')) {
+    //borramos todo
+    (0,_views_base__WEBPACK_IMPORTED_MODULE_0__.eliminarHijo)('resumen');
+  }
+  /******************************* Cotizacion*/
+
+
+  if (e.target.matches('.btn-carga-cotizacion')) {
+    //dibujamos la segunda parte
+    _views_quotationView__WEBPACK_IMPORTED_MODULE_3__.segundaParte();
+  }
+
+  if (e.target.matches('.btn-reset-datos')) {
+    //debemos de eliminar solo el segundo hijo que es la lista
+    _views_quotationView__WEBPACK_IMPORTED_MODULE_3__.eliminarListaIngredientes();
+  }
+
+  if (e.target.matches('.btn-salir-cotizacion')) {
     //borramos todo
     (0,_views_base__WEBPACK_IMPORTED_MODULE_0__.eliminarHijo)('resumen');
   }

@@ -22,7 +22,7 @@
                 <ul class="navbar-options" id="navbar_options">
                     <li class="list-item"><a href="#" class="navbar-link" id="buttonRecipe"><i class="fas fa-clipboard-list option-icon"></i>Receta</a></li>
                     <li class="list-item"><a href="#" class="navbar-link" id="buttonIngredient"><i class="fas fa-balance-scale-right option-icon"></i>Ingrediente</a></li>
-                    <li class="list-item"><a href="#" class="navbar-link" id="buttonIngredient"><i class="fas fa-hand-holding-usd option-icon"></i>Cotización</a></li>
+                    <li class="list-item"><a href="#" class="navbar-link" id="buttonCost"><i class="fas fa-hand-holding-usd option-icon"></i>Cotización</a></li>
                 </ul>
                 @auth
                     <div class="user-container" id="user_info">
@@ -35,13 +35,13 @@
                         <li class="list-item">
                             <form action="{{route('logout')}}" method="POST">
                                 @csrf
-                                <a href="#" 
-                                    class="navbar-link user-option" 
+                                <a href="#"
+                                    class="navbar-link user-option"
                                     onclick="this.closest('form').submit()"
                                 >
                                     <i class="fas fa-sign-out-alt"></i>Salir
                                 </a>
-                            </form> 
+                            </form>
                         </li>
                         <li class="list-item"><a href="#" class="navbar-link user-option" id="logout"><i class="fas fa-chevron-circle-up close-options" id="close_options"></i></a></li>
                     </ul>

@@ -1,6 +1,7 @@
 import { elementos , eliminarHijo} from "./views/base";
 import * as recipeView from "./views/recipeView";
 import * as ingredientView from "./views/ingredientView";
+import * as quotationView from './views/quotationView';
 
 let contadorSiguiente = 0;
 //añadimos botones "Nueva" y "Modificar"
@@ -13,6 +14,10 @@ elementos.buttonIngedient.addEventListener('click', ()=>{
     ingredientView.dibujarBotones('padreBotones','buttonNewIngredient','buttonModifyIngredient');
 });
 
+elementos.buttonCost.addEventListener('click', () => {
+    //añadimos la primer parte para la cotizacion
+    quotationView.primerParte();
+});
 
 //delegacion de eventos
 elementos.padreForRecipe.addEventListener('click', (e)=>{
@@ -100,4 +105,20 @@ elementos.padreForRecipe.addEventListener('click', (e)=>{
         eliminarHijo('resumen');
     }
 
+
+    /******************************* Cotizacion*/
+    if(e.target.matches('.btn-carga-cotizacion')){
+        //dibujamos la segunda parte
+        quotationView.segundaParte();
+    }
+
+    if(e.target.matches('.btn-reset-datos')){
+        //debemos de eliminar solo el segundo hijo que es la lista
+        quotationView.eliminarListaIngredientes();
+    }
+
+    if(e.target.matches('.btn-salir-cotizacion')){
+        //borramos todo
+        eliminarHijo('resumen');
+    }
 });

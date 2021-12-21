@@ -12,7 +12,8 @@ export const elementos = {
     buttonModifyIngredient: document.querySelector('.buttonModifyIngredient'),
     buttonSalirForm : document.querySelector('.btn-salir-formulario'),
     buttonSalirModifyIngre : document.querySelector('.btn-salir-modify'),
-    buttonCargaDatosIng: document.querySelector('.btn-carga-ingre-datos')
+    buttonCargaDatosIng: document.querySelector('.btn-carga-ingre-datos'),
+    buttonCargaDatosCotizacion: document.querySelector('.btn-carga-cotizacion')
 };
 
 export const eliminarHijo = (cadena) => {
