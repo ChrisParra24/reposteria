@@ -73,7 +73,7 @@ body{
     color: var(--contrast-color);
 }
 .fas, .fab{
-    margin: 0 4px;
+    margin: 0 6px;
     color: var(--text-light);
 }
 .icon{
@@ -118,6 +118,7 @@ body{
     min-width: 270px;
     max-width: 25%;
     margin: 0 auto;
+    margin-top: 35px;
     position: relative;
     z-index: 10;
     filter: opacity(0.87);
@@ -400,7 +401,8 @@ a>img{
         display: none;
     }
     .menu-responsive, .menu{
-        display: block
+        display: block;
+        z-index: 10;
     }
     .navbar{
         padding: 10px;

@@ -95,15 +95,15 @@ export const dibujarTerceraFase = (receta) => {
 
 export const dibujarActualizar = ()=>{
     //debemos de tener todas las recetas y mandarlas a dibujar
-    const hijo = `<div id="actualiza-1">
-                    <h4>Receta</h4>
-                    <select name="" id="">
+    const hijo = `<div class="container-fluid" id="actualiza-1">
+                    <h4 class="title-section">Receta</h4>
+                    <select name="" id="" class="">
                         <option value="">Seleccione una receta</option>
                         <option value="">Receta 1</option>
                         <option value="">Receta 2</option>
                         <option value="">Receta 4</option>
                     </select>
-                    <button class="btn-cargar-datos-ingredientes">Cargar datos</button>
+                    <button class="btn btn-secondary"><i class="fas fa-database"></i>Cargar datos</button>
                 </div>`;
     elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo);
 };
@@ -123,8 +123,8 @@ export const dibujarIngredientesActualizar = () => {
                 </div>`;
     elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo);
     //boton para guardar los cambios
-    const hijo2 = `<div>
-                        <button type="button" class="btn btn-secondary btn-guardar-actualizar">Guardar cambios</button>
+    const hijo2 = `<div class="container-btn">
+                        <button type="button" class="btn btn-secondary btn-guardar-actualizar"><i class="fas fa-save"></i>Guardar cambios</button>
                 </div>`;
     elementos.padreForRecipe.insertAdjacentHTML('beforeend',hijo2);
 };
